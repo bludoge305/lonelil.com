@@ -30,39 +30,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="lg:col-span-6 lg:inline-grid hidden"></div>
-        <div className="lg:col-span-2 lg:inline-grid lg:items-center lg:justify-center hidden">
-          <div className="bg-gray-900 h-[40rem] w-24 flex flex-col items-center justify-center rounded-2xl">
-            <a
-              href="https://github.com/lonelil"
-              className="cursor-pointer"
-            >
-              <div className="relative flex justify-center items-centers">
-                <img
-                  src="/icons/Github.webp"
-                  className="w-20 h-20 mt-[7.5px] mb-[7.5px] rounded-2xl"
-                  width="75"
-                  height="75"
-                  alt=""
-                />
-              </div>
-            </a>
-            <a
-              href="https://discord.com/users/603129750638034957"
-              className="cursor-pointer"
-            >
-              <div className="relative flex justify-center items-centers">
-                <img
-                  src="/icons/Discord.webp"
-                  className="w-20 h-20 mt-[7.5px] mb-[7.5px] rounded-2xl"
-                  width="75"
-                  height="75"
-                  alt=""
-                />
-              </div>
-            </a>
-          </div>
-        </div>
+        <div className="lg:col-span-7 lg:inline-grid hidden"></div>
       </div>
     </>
   );
