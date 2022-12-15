@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 
 export default function Home() {
   return (
@@ -39,7 +38,7 @@ export default function Home() {
               className="cursor-pointer"
             >
               <div className="relative flex justify-center items-centers">
-                <Image
+                <img
                   src="/icons/Github.webp"
                   className="w-20 h-20 mt-[7.5px] mb-[7.5px] rounded-2xl"
                   width="75"
@@ -53,7 +52,7 @@ export default function Home() {
               className="cursor-pointer"
             >
               <div className="relative flex justify-center items-centers">
-                <Image
+                <img
                   src="/icons/Discord.webp"
                   className="w-20 h-20 mt-[7.5px] mb-[7.5px] rounded-2xl"
                   width="75"
