@@ -18,13 +18,24 @@ export default function Home({ allPostsData, lonelil }) {
                   } ring-offset-base-100 ring-offset-2`}
                 >
                   {!lonelil.loading ? (
-                    <img
-                      src={`https://cdn.discordapp.com/avatars/${lonelil.status.discord_user.id}/${lonelil.status.discord_user.avatar}.webp`}
-                      loading="lazy"
-                      alt={lonelil.status.discord_user.username}
-                    ></img>
+                    <>
+                      <img
+                        src={`https://cdn.discordapp.com/avatars/${lonelil.status.discord_user.id}/${lonelil.status.discord_user.avatar}.webp`}
+                        loading="lazy"
+                        alt={lonelil.status.discord_user.username}
+                      ></img>
+                    </>
                   ) : null}
                 </div>
+                {!lonelil.loading &&
+                lonelil.status.discord_user.avatar_decoration ? (
+                  <img
+                    src={`https://cdn.discordapp.com/avatar-decorations/${lonelil.status.discord_user.id}/${lonelil.status.discord_user.avatar_decoration}.webp`}
+                    loading="lazy"
+                    className="absolute"
+                    alt={`${lonelil.status.discord_user.username}'s Avatar Decoration`}
+                  ></img>
+                ) : null}
               </div>
               <div className="flex flex-col">
                 <h1 className="text-5xl">lonelil</h1>
