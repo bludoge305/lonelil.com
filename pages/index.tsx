@@ -30,8 +30,11 @@ export default function Home({ allPostsData, allProjectData, lonelil }: any) {
           </div>
           <h1 className="text-4xl my-3 md:hidden">Projects</h1>
           <div className="grid w-full grid-cols-1 gap-4 md:hidden">
-            {allProjectData.map(({ name, description, image }: any) => (
-              <div className="card card-compact h-50 bg-secondary shadow-xl">
+            {allProjectData.map(({ id, name, description, image }: any) => (
+              <div
+                className="card card-compact h-50 bg-secondary shadow-xl"
+                key={id}
+              >
                 <figure>
                   <img src={image} alt={name} />
                 </figure>
@@ -46,8 +49,11 @@ export default function Home({ allPostsData, allProjectData, lonelil }: any) {
         <div className="md:col-span-7 md:inline-grid hidden">
           <h1 className="text-4xl my-3 px-6">Projects</h1>
           <div className="grid w-full grid-cols-1 gap-4 px-6 py-5 md:grid-cols-2">
-            {allProjectData.map(({ name, description, image }: any) => (
-              <div className="card card-compact h-50 bg-secondary shadow-xl">
+            {allProjectData.map(({ id, name, description, image }: any) => (
+              <div
+                className="card card-compact h-50 bg-secondary shadow-xl"
+                key={id}
+              >
                 <figure>
                   <img src={image} alt={name} />
                 </figure>
