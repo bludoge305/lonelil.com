@@ -12,7 +12,16 @@ export default function Home() {
         <div className="col-auto inline-grid"></div>
         <div className="col-span-3 inline-grid">
           <div className="mb-10">
-            <h1 className="text-6xl">lonelil</h1>
+            <div className="flex items-center gap-3">
+              <img
+                className="w-12 h-12 rounded-full"
+                src="/avatar.gif"
+                loading="lazy"
+              ></img>
+              <div className="flex flex-col">
+                <h1 className="text-6xl">lonelil</h1>
+              </div>
+            </div>
             <p className="text-3xl mt-2">welcome to my website!</p>
           </div>
           <div>
