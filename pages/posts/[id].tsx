@@ -20,7 +20,7 @@ export default function Post({ postData }: any) {
           </div>
         </div>
       </div>
-      <div className="text-center mt-4 text-2xl">
+      <div className="text-2xl px-10 lg:px-96 py-2">
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }}></div>
       </div>
     </>
