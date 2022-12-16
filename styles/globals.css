@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.ring-online {
+  @apply ring-primary;
+  --p: 139 47% 44%;
+}
+
+.ring-idle {
+  @apply ring-primary;
+  --p: 38 96% 54%;
+}
+
+.ring-dnd {
+  @apply ring-primary;
+  --p: 359 83% 59%;
+}
+
+.ring-offline {
+  @apply ring-primary;
+  --p: 214 10% 50%;
+}

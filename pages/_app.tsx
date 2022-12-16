@@ -2,10 +2,15 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import localFont from "@next/font/local";
 import Head from "next/head";
+import { useLanyard } from "react-use-lanyard";
 
 const billy = localFont({ src: "../fonts/Billy_2.0.ttf" });
-
+//@ts-ignore
 export default function App({ Component, pageProps }: AppProps) {
+  const lonelil = useLanyard({
+    userId: "603129750638034957",
+    socket: true,
+  });
   return (
     <>
       <Head>
@@ -19,7 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main className={`${billy.className} min-h-screen`}>
-        <Component {...pageProps} />
+        <Component {...pageProps} lonelil={lonelil} />
       </main>
     </>
   );
