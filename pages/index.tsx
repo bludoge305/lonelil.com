@@ -32,7 +32,7 @@ export default function Home({ allPostsData, lonelil }) {
                   <img
                     src={`https://cdn.discordapp.com/avatar-decorations/${lonelil.status.discord_user.id}/${lonelil.status.discord_user.avatar_decoration}.webp`}
                     loading="lazy"
-                    className="absolute"
+                    className="absolute scale-150"
                     alt={`${lonelil.status.discord_user.username}'s Avatar Decoration`}
                   ></img>
                 ) : null}
