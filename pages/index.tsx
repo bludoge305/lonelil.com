@@ -1,118 +1,24 @@
 import { getSortedPostsData } from "../lib/posts";
+import { getAllProjects } from "../lib/projects";
 import Link from "next/link";
-//@ts-ignore
-export default function Home({ allPostsData, lonelil }) {
+import User from "../components/home/user";
+
+export default function Home({ allPostsData, allProjectData, lonelil }: any) {
   return (
     <>
       <div className="py-28 grid grid-cols-12">
         <div className="col-auto inline-grid"></div>
-        <div className="col-span-3 inline-grid">
+        <div className="col-span-10 md:col-span-4 lg:col-span-3 inline-grid">
           <div className="mb-10">
-            <div className="flex items-center gap-4">
-              <div className="avatar">
-                <div
-                  className={`w-12 rounded-full ring ring-${
-                    !lonelil.loading
-                      ? lonelil.status.discord_status
-                      : "ring-primary"
-                  } ring-offset-base-100 ring-offset-2`}
-                >
-                  {!lonelil.loading ? (
-                    <>
-                      <img
-                        src={`https://cdn.discordapp.com/avatars/${lonelil.status.discord_user.id}/${lonelil.status.discord_user.avatar}.webp`}
-                        loading="lazy"
-                        alt={lonelil.status.discord_user.username}
-                      ></img>
-                    </>
-                  ) : null}
-                </div>
-                {!lonelil.loading &&
-                lonelil.status.discord_user.avatar_decoration ? (
-                  <img
-                    src={`https://cdn.discordapp.com/avatar-decorations/${lonelil.status.discord_user.id}/${lonelil.status.discord_user.avatar_decoration}.webp`}
-                    loading="lazy"
-                    className="absolute scale-150"
-                    alt={`${lonelil.status.discord_user.username}'s Avatar Decoration`}
-                  ></img>
-                ) : null}
-              </div>
-              <div className="flex flex-col">
-                <h1 className="text-5xl">lonelil</h1>
-                <p className="text-1xl">
-                  {!lonelil.loading ? (
-                    <>
-                      {lonelil.status.listening_to_spotify ? (
-                        <>
-                          <div
-                            className="tooltip tooltip-primary"
-                            data-tip={lonelil.status.spotify.album}
-                          >
-                            <img
-                              src={lonelil.status.spotify.album_art_url}
-                              width={20}
-                              height={20}
-                              className="inline-block rounded-xl"
-                              alt={lonelil.status.spotify.album}
-                            />
-                          </div>{" "}
-                          Listening to {lonelil.status.spotify.song} by{" "}
-                          {lonelil.status.spotify.artist}
-                        </>
-                      ) : null}
-                      {lonelil.status.activities[0] &&
-                      !lonelil.status.listening_to_spotify ? (
-                        <>
-                          <div
-                            className="tooltip tooltip-primary"
-                            data-tip={
-                              lonelil.status.activities[0].assets.large_text
-                            }
-                          >
-                            <img
-                              src={
-                                lonelil.status.activities[0].assets.large_image.startsWith(
-                                  "mp:external"
-                                )
-                                  ? lonelil.status.activities[0].assets.large_image.replace(
-                                      "mp:external",
-                                      "https://media.discordapp.net/external"
-                                    )
-                                  : `https://cdn.discordapp.com/app-assets/${lonelil.status.activities[0].application_id}/${lonelil.status.activities[0].assets.large_image}`
-                              }
-                              width={20}
-                              height={20}
-                              className="inline-block rounded-xl"
-                              alt={
-                                lonelil.status.activities[0].assets.large_text
-                              }
-                            />
-                          </div>{" "}
-                          Playing {lonelil.status.activities[0].name}
-                          {lonelil.status.activities[0].details
-                            ? `, ${lonelil.status.activities[0].details}`
-                            : null}
-                          {lonelil.status.activities[0].state
-                            ? `, ${lonelil.status.activities[0].state}`
-                            : null}
-                        </>
-                      ) : null}
-                    </>
-                  ) : null}
-                </p>
-              </div>
-            </div>
-
+            <User lonelil={lonelil} />
             <p className="text-3xl mt-3">welcome to my website!</p>
           </div>
           <div>
-            <h1 className="text-4xl">my blog:</h1>
+            <h1 className="text-4xl">my blog</h1>
             <ul className="mt-5">
-              {/* 
-              //@ts-ignore */}
-              {allPostsData.map(({ id, date, title }) => (
+              {allPostsData.map(({ id, date, title }: any) => (
                 <Link href={`/posts/${id}`} key={id}>
-                  <li className="card w-96 bg-primary shadow-xl mb-3">
+                  <li className="card bg-primary shadow-xl mb-3">
                     <div className="card-body">
                       <h2 className="card-title">{title}</h2>
                       <p>{date}</p>
@@ -122,8 +28,37 @@ export default function Home({ allPostsData, lonelil }) {
               ))}
             </ul>
           </div>
+          <h1 className="text-4xl my-3 md:hidden">Projects</h1>
+          <div className="grid w-full grid-cols-1 gap-4 md:hidden">
+            {allProjectData.map(({ name, description, image }: any) => (
+              <div className="card card-compact h-50 bg-secondary shadow-xl">
+                <figure>
+                  <img src={image} alt={name} />
+                </figure>
+                <div className="card-body">
+                  <h2 className="card-title">{name}</h2>
+                  <p>{description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="lg:col-span-7 lg:inline-grid hidden"></div>
+        <div className="md:col-span-7 md:inline-grid hidden">
+          <h1 className="text-4xl my-3 px-6">Projects</h1>
+          <div className="grid w-full grid-cols-1 gap-4 px-6 py-5 md:grid-cols-2">
+            {allProjectData.map(({ name, description, image }: any) => (
+              <div className="card card-compact h-50 bg-secondary shadow-xl">
+                <figure>
+                  <img src={image} alt={name} />
+                </figure>
+                <div className="card-body">
+                  <h2 className="card-title">{name}</h2>
+                  <p>{description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </>
   );
@@ -131,9 +66,11 @@ export default function Home({ allPostsData, lonelil }) {
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
+  const allProjectData = getAllProjects();
   return {
     props: {
       allPostsData,
+      allProjectData,
     },
   };
 }

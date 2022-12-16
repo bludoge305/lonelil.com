@@ -1,7 +1,7 @@
 import { getAllPostIds, getPostData } from "../../lib/posts";
 import Head from "next/head";
-//@ts-ignore
-export default function Post({ postData }) {
+
+export default function Post({ postData }: any) {
   const title = `${postData.title} - lonelil`;
   return (
     <>
