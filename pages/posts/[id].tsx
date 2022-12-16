@@ -7,11 +7,9 @@ export default function Post({ postData }) {
     <>
       <Head>
         <title>{title}</title>
-        <link type="application/json+oembed" href="https://lonelil.dev/oembed.json" />
+        <meta name="description" content={postData.content} />
         <meta property="og:title" content={postData.title} />
         <meta property="og:description" content={postData.content} />
-        <meta name="theme-color" content="#3c455b" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
       <div className="hero h-48 bg-base-200">
