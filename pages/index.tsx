@@ -1,6 +1,8 @@
 import Head from "next/head";
-
-export default function Home() {
+import { getSortedPostsData } from "../lib/posts";
+import Link from "next/link";
+//@ts-ignore
+export default function Home({ allPostsData }) {
   return (
     <>
       <Head>
@@ -26,21 +28,33 @@ export default function Home() {
           </div>
           <div>
             <h1 className="text-4xl">my blog:</h1>
-            <div className="mt-5">
-              <div className="card w-96 bg-base-100 shadow-xl image-full">
-                <figure>
-                  <img src="" alt="Image" />
-                </figure>
-                <div className="card-body">
-                  <h2 className="card-title">Example Post</h2>
-                  <p>Example Post</p>
-                </div>
-              </div>
-            </div>
+            <ul className="mt-5">
+              {/* 
+              //@ts-ignore */}
+              {allPostsData.map(({ id, date, title }) => (
+                <Link href={`/posts/${id}`} key={id}>
+                  <li className="card w-96 bg-primary shadow-xl mb-3">
+                    <div className="card-body">
+                      <h2 className="card-title">{title}</h2>
+                      <p>{date}</p>
+                    </div>
+                  </li>
+                </Link>
+              ))}
+            </ul>
           </div>
         </div>
         <div className="lg:col-span-7 lg:inline-grid hidden"></div>
       </div>
     </>
   );
+}
+
+export async function getStaticProps() {
+  const allPostsData = getSortedPostsData();
+  return {
+    props: {
+      allPostsData,
+    },
+  };
 }
