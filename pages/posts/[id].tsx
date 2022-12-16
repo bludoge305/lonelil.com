@@ -7,7 +7,7 @@ export default function Post({ postData }) {
     <>
       <Head>
         <title>{title}</title>
-        <link type="application/json+oembed" href="/oembed.json" />
+        <link type="application/json+oembed" href="https://lonelil.dev/oembed.json" />
         <meta property="og:title" content={postData.title} />
         <meta property="og:description" content={postData.content} />
         <meta name="theme-color" content="#3c455b" />

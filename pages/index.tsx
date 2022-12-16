@@ -1,15 +1,9 @@
-import Head from "next/head";
 import { getSortedPostsData } from "../lib/posts";
 import Link from "next/link";
 //@ts-ignore
 export default function Home({ allPostsData }) {
   return (
     <>
-      <Head>
-        <title>lonelil</title>
-        <meta name="description" content="lonelil's website" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
       <div className="py-28 grid grid-cols-12">
         <div className="col-auto inline-grid"></div>
         <div className="col-span-3 inline-grid">
