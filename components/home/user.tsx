@@ -44,6 +44,7 @@ export default function user({ lonelil }: any) {
                         height={20}
                         className="inline-block rounded-xl"
                         alt={lonelil.status.spotify.album}
+                        loading="lazy"
                       />
                     </div>{" "}
                     Listening to {lonelil.status.spotify.song} by{" "}
@@ -72,6 +73,7 @@ export default function user({ lonelil }: any) {
                         height={20}
                         className="inline-block rounded-xl"
                         alt={lonelil.status.activities[0].assets.large_text}
+                        loading="lazy"
                       />
                     </div>{" "}
                     Playing {lonelil.status.activities[0].name}

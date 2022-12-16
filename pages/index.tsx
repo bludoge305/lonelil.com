@@ -36,7 +36,7 @@ export default function Home({ allPostsData, allProjectData, lonelil }: any) {
                 key={id}
               >
                 <figure>
-                  <img src={image} alt={name} />
+                  <img src={image} alt={name} loading="lazy" />
                 </figure>
                 <div className="card-body">
                   <h2 className="card-title">{name}</h2>
@@ -55,7 +55,7 @@ export default function Home({ allPostsData, allProjectData, lonelil }: any) {
                 key={id}
               >
                 <figure>
-                  <img src={image} alt={name} />
+                  <img src={image} alt={name} loading="lazy" />
                 </figure>
                 <div className="card-body">
                   <h2 className="card-title">{name}</h2>
