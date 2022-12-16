@@ -6,7 +6,7 @@ import Head from "next/head";
 import { useLanyard } from "react-use-lanyard";
 import { loadCursor } from "../util/cursor";
 
-const billy = localFont({ src: "../fonts/Billy_2.0.ttf" });
+const billy = localFont({ src: "../fonts/billy_2.0.woff2" });
 
 export default function App({ Component, pageProps }: AppProps) {
   const lonelil = useLanyard({
