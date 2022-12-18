@@ -184,9 +184,22 @@ export default function Post({ postData, blocks, lonelil }: any) {
       </Head>
       <Navbar lonelil={lonelil} />
 
-      <div className="hero h-48 bg-base-200">
+      <div className="hero bg-base-200">
         <div className="hero-content text-center">
           <div className="max-w-md">
+            {postData.properties.Tags.multi_select.map((tag: any) => {
+              return (
+                <div
+                  className="badge badge-outline"
+                  key={tag.id}
+                  style={{
+                    color: tag.color,
+                  }}
+                >
+                  {tag.name}
+                </div>
+              );
+            })}
             <h1 className={styles.name}>
               <Text text={postData.properties.Name.title} />
             </h1>
