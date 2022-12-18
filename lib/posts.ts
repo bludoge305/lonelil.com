@@ -1,62 +1,49 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
-import { remark } from "remark";
-import html from "remark-html";
+import { Client } from "@notionhq/client";
+const notion = new Client({
+  auth: process.env.NOTION_TOKEN,
+});
+const database_id = process.env.NOTION_BLOG_DATABASE_ID as string;
 
-const postsDirectory = path.join(process.cwd(), "posts");
-
-export function getSortedPostsData() {
-  const fileNames = fs.readdirSync(postsDirectory);
-  const allPostsData = fileNames.map((fileName) => {
-    const id = fileName.replace(/\.md$/, "");
-
-    const fullPath = path.join(postsDirectory, fileName);
-    const fileContents = fs.readFileSync(fullPath, "utf8");
-
-    const matterResult = matter(fileContents);
-
-    return {
-      id,
-      ...matterResult.data,
-    };
+export async function getAllPosts() {
+  const posts = await notion.databases.query({
+    database_id,
   });
-  return allPostsData.sort((a: any, b: any) => {
-    if (a.date < b.date) {
-      return 1;
-    } else {
-      return -1;
-    }
-  });
+  return posts.results;
 }
 
-export function getAllPostIds() {
-  const fileNames = fs.readdirSync(postsDirectory);
+export async function getAllPostIds() {
+  const posts = await notion.databases.query({
+    database_id,
+  });
 
-  return fileNames.map((fileName) => {
+  return posts.results.map((post: any) => {
     return {
       params: {
-        id: fileName.replace(/\.md$/, ""),
+        id: post.id,
       },
     };
   });
 }
 
-export async function getPostData(id: string) {
-  const fullPath = path.join(postsDirectory, `${id}.md`);
-  const fileContents = fs.readFileSync(fullPath, "utf8");
+export async function getPost(id: string) {
+  const post = await notion.pages.retrieve({ page_id: id });
 
-  const matterResult = matter(fileContents);
+  return post;
+}
 
-  const processedContent = await remark()
-    .use(html)
-    .process(matterResult.content);
-  const contentHtml = processedContent.toString();
-
-  return {
-    id,
-    content: matterResult.content,
-    contentHtml,
-    ...matterResult.data,
-  };
+export async function getBlocks(id: string) {
+  const blocks = [];
+  let cursor;
+  while (true) {
+    const { results, next_cursor }: any = await notion.blocks.children.list({
+      start_cursor: cursor,
+      block_id: id,
+    });
+    blocks.push(...results);
+    if (!next_cursor) {
+      break;
+    }
+    cursor = next_cursor;
+  }
+  return blocks;
 }

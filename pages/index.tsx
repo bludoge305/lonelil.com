@@ -1,9 +1,9 @@
-import { getSortedPostsData } from "../lib/posts";
+import { getAllPosts } from "../lib/posts";
 import { getAllProjects } from "../lib/projects";
 import Link from "next/link";
 import User from "../components/home/user";
 
-export default function Home({ allPostsData, allProjectData, lonelil }: any) {
+export default function Home({ posts, allProjectData, lonelil }: any) {
   return (
     <>
       <div className="py-28 grid grid-cols-12">
@@ -16,15 +16,58 @@ export default function Home({ allPostsData, allProjectData, lonelil }: any) {
           <div>
             <h1 className="text-4xl">my blog</h1>
             <ul className="mt-5">
-              {allPostsData.map(({ id, date, title }: any) => (
-                <Link href={`/posts/${id}`} key={id}>
-                  <li className="card bg-primary shadow-xl mb-3">
-                    <div className="card-body">
-                      <h2 className="card-title">{title}</h2>
-                      <p>{date}</p>
-                    </div>
-                  </li>
-                </Link>
+              {posts.map((post: any) => (
+                <div key={post.id}>
+                  {post.properties.Public.checkbox ? (
+                    <Link href={`/posts/${post.id}`}>
+                      <li
+                        className={`card bg-primary shadow-xl mb-3  ${
+                          post.cover ? "image-full" : ""
+                        }`}
+                      >
+                        {post.cover ? (
+                          <figure className="h-36">
+                            <img
+                              src={post.cover.external.url}
+                              alt="Shoes"
+                              style={{
+                                height: "unset",
+                              }}
+                            />
+                          </figure>
+                        ) : null}
+                        <div className="card-body">
+                          <h2 className="card-title">
+                            {post.properties.Name.title[0].plain_text}
+                          </h2>
+                          <p>
+                            {
+                              post.properties.Description.rich_text[0]
+                                .plain_text
+                            }
+                          </p>
+                          <div className="card-actions justify-end">
+                            {post.properties.Tags.multi_select.map(
+                              (tag: any) => {
+                                return (
+                                  <div
+                                    className="badge badge-outline"
+                                    key={tag.id}
+                                    style={{
+                                      color: tag.color,
+                                    }}
+                                  >
+                                    {tag.name}
+                                  </div>
+                                );
+                              }
+                            )}
+                          </div>
+                        </div>
+                      </li>
+                    </Link>
+                  ) : null}
+                </div>
               ))}
             </ul>
           </div>
@@ -71,11 +114,11 @@ export default function Home({ allPostsData, allProjectData, lonelil }: any) {
 }
 
 export async function getStaticProps() {
-  const allPostsData = getSortedPostsData();
+  const allPostsData = await getAllPosts();
   const allProjectData = getAllProjects();
   return {
     props: {
-      allPostsData,
+      posts: allPostsData,
       allProjectData,
     },
   };

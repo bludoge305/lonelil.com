@@ -21,3 +21,7 @@
   @apply ring-primary;
   --p: 214 10% 50%;
 }
+
+.card.image-full::before {
+  background-color: hsl(218 18% 12% / var(--tw-bg-opacity));
+}
