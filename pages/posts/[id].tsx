@@ -8,7 +8,7 @@ export const Text = ({ text }: any) => {
   if (!text) {
     return null;
   }
-  return text.map((value: any) => {
+  return text.map((value: any, i: number) => {
     const {
       annotations: { bold, code, color, italic, strikethrough, underline },
       text,
@@ -23,6 +23,7 @@ export const Text = ({ text }: any) => {
           underline ? styles.underline : "",
         ].join(" ")}
         style={color !== "default" ? { color } : {}}
+        key={i}
       >
         {text.link ? <a href={text.link.url}>{text.content}</a> : text.content}
       </span>
@@ -161,9 +162,15 @@ export default function Post({ postData, blocks }: any) {
     <>
       <Head>
         <title>{title}</title>
-        <meta name="description" content={postData.content} />
-        <meta property="og:title" content={postData.title} />
-        <meta property="og:description" content={postData.content} />
+        <meta
+          name="description"
+          content={`Read ${postData.properties.Name.title[0].plain_text} now on lonelil.dev.`}
+        />
+        <meta property="og:title" content={title} />
+        <meta
+          property="og:description"
+          content={`Read ${postData.properties.Name.title[0].plain_text} now on lonelil.dev.`}
+        />
       </Head>
 
       <div className="hero h-48 bg-base-200">
