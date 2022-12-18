@@ -3,6 +3,7 @@ import { Fragment } from "react";
 import Link from "next/link";
 import Head from "next/head";
 import styles from "../../styles/post.module.css";
+import Navbar from "../../components/ui/navbar";
 
 export const Text = ({ text }: any) => {
   if (!text) {
@@ -156,7 +157,7 @@ const renderBlock = (block: any) => {
   }
 };
 
-export default function Post({ postData, blocks }: any) {
+export default function Post({ postData, blocks, lonelil }: any) {
   const title = `${postData.properties.Name.title[0].plain_text} - lonelil`;
   return (
     <>
@@ -181,6 +182,7 @@ export default function Post({ postData, blocks }: any) {
           )}
         />
       </Head>
+      <Navbar lonelil={lonelil} />
 
       <div className="hero h-48 bg-base-200">
         <div className="hero-content text-center">
