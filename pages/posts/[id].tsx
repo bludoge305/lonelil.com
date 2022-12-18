@@ -163,30 +163,33 @@ export default function Post({ postData, blocks }: any) {
       <Head>
         <title>{title}</title>
         <meta
-          name="description"
-          content={`Read ${postData.properties.Name.title[0].plain_text} now on lonelil.dev.`}
+          property="og:title"
+          content={postData.properties.Name.title[0].plain_text}
         />
-        <meta property="og:title" content={title} />
+        <meta
+          property="twitter:title"
+          content={postData.properties.Name.title[0].plain_text}
+        />
         <meta
           property="og:description"
-          content={`Read ${postData.properties.Name.title[0].plain_text} now on lonelil.dev.`}
+          content={postData.properties.Description.rich_text[0].plain_text}
+        />
+        <link
+          type="application/json+oembed"
+          href={encodeURI(
+            `https://webembed.onrender.com/oembed?provider_name=Read ${postData.properties.Name.title[0].plain_text} now on lonelil.dev.&provider_url=https://lonelil.dev/posts/${postData.id}&author_name=lonelil&author_url=https://lonelil.dev`
+          )}
         />
       </Head>
 
       <div className="hero h-48 bg-base-200">
         <div className="hero-content text-center">
           <div className="max-w-md">
-            <h1 className="text-5xl font-bold">
-              <h1 className={styles.name}>
-                <Text text={postData.properties.Name.title} />
-              </h1>
+            <h1 className={styles.name}>
+              <Text text={postData.properties.Name.title} />
             </h1>
-            <p>
-              Created at: {new Date(postData.created_time).toLocaleString()}
-              <br />
-              Last Edited at:{" "}
-              {new Date(postData.last_edited_time).toLocaleString()}
-            </p>
+            <p>{postData.properties.Description.rich_text[0].plain_text}</p>
+            <p>{new Date(postData.created_time).toLocaleString()}</p>
           </div>
         </div>
       </div>
@@ -213,8 +216,7 @@ export async function getStaticPaths() {
   };
 }
 
-//@ts-ignore
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params }: any) {
   const postData = await getPost(params.id);
   const blocks = await getBlocks(params.id);
 
