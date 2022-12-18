@@ -29,7 +29,7 @@ export default function Home({ posts, allProjectData, lonelil }: any) {
                           <figure className="h-36">
                             <img
                               src={post.cover.external.url}
-                              alt="Shoes"
+                              alt={post.properties.Name.title[0].plain_text}
                               style={{
                                 height: "unset",
                               }}
@@ -40,7 +40,15 @@ export default function Home({ posts, allProjectData, lonelil }: any) {
                           <h2 className="card-title">
                             {post.properties.Name.title[0].plain_text}
                           </h2>
-                          <p>
+                          <p
+                            style={{
+                              display: "-webkit-box",
+                              //@ts-ignore
+                              "-webkit-line-clamp": "3",
+                              "-webkit-box-orient": "vertical",
+                              overflow: "hidden",
+                            }}
+                          >
                             {
                               post.properties.Description.rich_text[0]
                                 .plain_text

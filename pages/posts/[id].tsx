@@ -190,7 +190,17 @@ export default function Post({ postData, blocks, lonelil }: any) {
             <h1 className={styles.name}>
               <Text text={postData.properties.Name.title} />
             </h1>
-            <p>{postData.properties.Description.rich_text[0].plain_text}</p>
+            <p
+              style={{
+                display: "-webkit-box",
+                //@ts-ignore
+                "-webkit-line-clamp": "3",
+                "-webkit-box-orient": "vertical",
+                overflow: "hidden",
+              }}
+            >
+              {postData.properties.Description.rich_text[0].plain_text}
+            </p>
           </div>
         </div>
       </div>
