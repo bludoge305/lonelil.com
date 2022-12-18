@@ -189,7 +189,6 @@ export default function Post({ postData, blocks }: any) {
               <Text text={postData.properties.Name.title} />
             </h1>
             <p>{postData.properties.Description.rich_text[0].plain_text}</p>
-            <p>{new Date(postData.created_time).toLocaleString()}</p>
           </div>
         </div>
       </div>
