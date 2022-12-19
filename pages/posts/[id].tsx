@@ -2,7 +2,6 @@ import { getAllPostIds, getPost, getBlocks } from "../../lib/posts";
 import { Fragment } from "react";
 import Link from "next/link";
 import Head from "next/head";
-import Navbar from "../../components/ui/navbar";
 
 export const Text = ({ text }: any) => {
   if (!text) {
@@ -158,7 +157,7 @@ const renderBlock = (block: any) => {
   }
 };
 
-export default function Post({ postData, blocks, lonelil }: any) {
+export default function Post({ postData, blocks }: any) {
   const title = `${postData.properties.Name.title[0].plain_text} - lonelil`;
   return (
     <>
@@ -187,7 +186,6 @@ export default function Post({ postData, blocks, lonelil }: any) {
           )}
         />
       </Head>
-      <Navbar lonelil={lonelil} />
 
       <div className="hero bg-base-200">
         <div className="hero-content text-center">
