@@ -1,7 +1,8 @@
-import { getAllPosts } from "../lib/posts";
-import { getAllProjects } from "../lib/projects";
+import { Fragment } from "react";
 import Link from "next/link";
 import User from "../components/home/user";
+import { getAllPosts } from "../lib/posts";
+import { getAllProjects } from "../lib/projects";
 
 export default function Home({ posts, allProjectData, lonelil }: any) {
   return (
@@ -17,7 +18,7 @@ export default function Home({ posts, allProjectData, lonelil }: any) {
             <h1 className="text-4xl">my blog</h1>
             <ul className="mt-5">
               {posts.map((post: any) => (
-                <div key={post.id}>
+                <Fragment key={post.id}>
                   {post.properties.Public.checkbox ? (
                     <Link href={`/posts/${post.id}`}>
                       <li
@@ -71,7 +72,7 @@ export default function Home({ posts, allProjectData, lonelil }: any) {
                       </li>
                     </Link>
                   ) : null}
-                </div>
+                </Fragment>
               ))}
             </ul>
           </div>
