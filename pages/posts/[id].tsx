@@ -164,18 +164,22 @@ export default function Post({ postData, blocks, lonelil }: any) {
       <Head>
         <title>{title}</title>
         <meta
+          key="og_title"
           property="og:title"
           content={postData.properties.Name.title[0].plain_text}
         />
         <meta
+          key="twitter_title"
           property="twitter:title"
           content={postData.properties.Name.title[0].plain_text}
         />
         <meta
+          key="og_description"
           property="og:description"
           content={postData.properties.Description.rich_text[0].plain_text}
         />
         <link
+          key="oembed"
           type="application/json+oembed"
           href={encodeURI(
             `https://webembed.onrender.com/oembed?provider_name=Read "${postData.properties.Name.title[0].plain_text}" now only on lonelil.dev.&provider_url=https://lonelil.dev/posts/${postData.id}&author_name=lonelil&author_url=https://lonelil.dev`

@@ -28,13 +28,23 @@ export default function App({ Component, pageProps }: AppProps) {
         <title>lonelil</title>
         <meta name="theme-color" content="#3c455b" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="og:title" content={`lonelil's website`} />
-        <meta property="twitter:title" content={`lonelil's website`} />
         <meta
+          key="og_title"
+          property="og:title"
+          content={`lonelil's website`}
+        />
+        <meta
+          key="twitter_title"
+          property="twitter:title"
+          content={`lonelil's website`}
+        />
+        <meta
+          key="og_description"
           property="og:description"
           content={`welcome to lonelil's website!`}
         />
         <link
+          key="oembed"
           type="application/json+oembed"
           href={encodeURI(
             `https://webembed.onrender.com/oembed?provider_name=lonelil.dev&provider_url=https://lonelil.dev/`
