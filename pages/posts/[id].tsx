@@ -2,7 +2,6 @@ import { getAllPostIds, getPost, getBlocks } from "../../lib/posts";
 import { Fragment } from "react";
 import Link from "next/link";
 import Head from "next/head";
-import styles from "../../styles/post.module.css";
 import Navbar from "../../components/ui/navbar";
 
 export const Text = ({ text }: any) => {
@@ -17,11 +16,13 @@ export const Text = ({ text }: any) => {
     return (
       <span
         className={[
-          bold ? styles.bold : "",
-          code ? styles.code : "",
-          italic ? styles.italic : "",
-          strikethrough ? styles.strikethrough : "",
-          underline ? styles.underline : "",
+          bold ? "font-bold" : "",
+          code
+            ? "font-mono bg-[rgb(242, 242, 242)] pt-0.5 pr-1 rounded-sm dark:bg-[rgb(15, 8, 28)]"
+            : "",
+          italic ? "italic" : "",
+          strikethrough ? "line-through" : "",
+          underline ? "underline" : "",
         ].join(" ")}
         style={color !== "default" ? { color } : {}}
         key={i}
@@ -120,8 +121,8 @@ const renderBlock = (block: any) => {
       return <blockquote key={id}>{value.rich_text[0].plain_text}</blockquote>;
     case "code":
       return (
-        <pre className={styles.pre}>
-          <code className={styles.code_block} key={id}>
+        <pre className="bg-[rgb(242, 242, 242)] pt-0.5 pr-1 mt-5 mr-0 leading-loose rounded-xl overflow-auto dark:bg-[rgb(15, 8, 28)] hover:bg-[rgba(55, 53, 47, 0.08)] hover:cursor-pointer hover:rounded-sm dark:hover:bg-[rgba(255, 255, 255, 0.1)] dark:hover:cursor-pointer dark:hover:rounded-sm">
+          <code className="pt-5 font-mono flex flex-wrap" key={id}>
             {value.rich_text[0].plain_text}
           </code>
         </pre>
@@ -134,9 +135,9 @@ const renderBlock = (block: any) => {
       const caption_file = value.caption ? value.caption[0]?.plain_text : "";
       return (
         <figure>
-          <div className={styles.file}>
+          <div className="pt-0.5 pr-1 no-underline">
             📎{" "}
-            <Link href={src_file} passHref>
+            <Link href={src_file} passHref className="text-inherit">
               {lastElementInArray.split("?")[0]}
             </Link>
           </div>
@@ -146,7 +147,7 @@ const renderBlock = (block: any) => {
     case "bookmark":
       const href = value.url;
       return (
-        <a href={href} target="_brank" className={styles.bookmark}>
+        <a href={href} target="_brank" className="block mb-3">
           {href}
         </a>
       );
@@ -204,7 +205,7 @@ export default function Post({ postData, blocks, lonelil }: any) {
                 </div>
               );
             })}
-            <h1 className={styles.name}>
+            <h1 className="text-4xl">
               <Text text={postData.properties.Name.title} />
             </h1>
             <p
@@ -212,7 +213,7 @@ export default function Post({ postData, blocks, lonelil }: any) {
                 display: "-webkit-box",
                 WebkitLineClamp: "3",
                 WebkitBoxOrient: "vertical",
-                overflow: "hidden",
+                overflow: "scroll",
               }}
             >
               {postData.properties.Description.rich_text[0].plain_text}
@@ -221,9 +222,9 @@ export default function Post({ postData, blocks, lonelil }: any) {
         </div>
       </div>
 
-      <article className={styles.container}>
+      <article className="blog-post">
         <section>
-          <Link href="/" className={styles.back}>
+          <Link href="/" className="inline-block mb-5">
             ← Go home
           </Link>
           {blocks.map((block: any) => (

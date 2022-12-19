@@ -25,3 +25,30 @@
 .card.image-full::before {
   background-color: hsl(218 18% 12% / var(--tw-bg-opacity));
 }
+
+.blog-post {
+  padding: 0 20px;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.5;
+  padding-top: 20px
+}
+
+.blog-post h1 {
+  font-size: 32px;
+}
+
+.blog-post img {
+  width: 100%;
+  height: auto;
+}
+
+.blog-post figure {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.blog-post figcaption {
+  opacity: 0.6;
+}
+
