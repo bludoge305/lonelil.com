@@ -178,7 +178,7 @@ export default function Post({ postData, blocks, lonelil }: any) {
         <link
           type="application/json+oembed"
           href={encodeURI(
-            `https://webembed.onrender.com/oembed?provider_name=Read ${postData.properties.Name.title[0].plain_text} now on lonelil.dev.&provider_url=https://lonelil.dev/posts/${postData.id}&author_name=lonelil&author_url=https://lonelil.dev`
+            `https://webembed.onrender.com/oembed?provider_name=Read "${postData.properties.Name.title[0].plain_text}" now only on lonelil.dev.&provider_url=https://lonelil.dev/posts/${postData.id}&author_name=lonelil&author_url=https://lonelil.dev`
           )}
         />
       </Head>
@@ -206,9 +206,8 @@ export default function Post({ postData, blocks, lonelil }: any) {
             <p
               style={{
                 display: "-webkit-box",
-                //@ts-ignore
-                "-webkit-line-clamp": "3",
-                "-webkit-box-orient": "vertical",
+                WebkitLineClamp: "3",
+                WebkitBoxOrient: "vertical",
                 overflow: "hidden",
               }}
             >
@@ -220,12 +219,12 @@ export default function Post({ postData, blocks, lonelil }: any) {
 
       <article className={styles.container}>
         <section>
-          {blocks.map((block: any) => (
-            <Fragment key={block.id}>{renderBlock(block)}</Fragment>
-          ))}
           <Link href="/" className={styles.back}>
             ← Go home
           </Link>
+          {blocks.map((block: any) => (
+            <Fragment key={block.id}>{renderBlock(block)}</Fragment>
+          ))}
         </section>
       </article>
     </>

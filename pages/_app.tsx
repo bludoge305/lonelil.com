@@ -3,6 +3,7 @@ import type { AppProps } from "next/app";
 import { useRef, useEffect } from "react";
 import localFont from "@next/font/local";
 import Head from "next/head";
+import Script from "next/script";
 import { useLanyard } from "react-use-lanyard";
 import { loadCursor } from "../util/cursor";
 
@@ -27,7 +28,44 @@ export default function App({ Component, pageProps }: AppProps) {
         <title>lonelil</title>
         <meta name="theme-color" content="#3c455b" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:title" content={`lonelil's website`} />
+        <meta property="twitter:title" content={`lonelil's website`} />
+        <meta
+          property="og:description"
+          content={`welcome to lonelil's website!`}
+        />
+        <meta property="og:type" content="video.other" />
+        <meta
+          property="og:video:url"
+          content="https://media.discordapp.net/attachments/930053045327368192/1054281125176029287/Taylor_Swift_-_Anti-Hero_b1kbLwvqugk.mp4"
+        />
+        <meta
+          property="og:video:secure_url"
+          content="https://media.discordapp.net/attachments/930053045327368192/1054281125176029287/Taylor_Swift_-_Anti-Hero_b1kbLwvqugk.mp4"
+        />
+        <meta property="og:video:type" content="text/html" />
+        <meta property="og:video:width" content="900" />
+        <meta property="og:video:height" content="506" />
+        <link
+          type="application/json+oembed"
+          href={encodeURI(
+            `https://webembed.onrender.com/oembed?provider_name=lonelil.dev&provider_url=https://lonelil.dev/`
+          )}
+        />
       </Head>
+      <Script id="fathom-load">
+        {`(function(f, a, t, h, o, m){
+    a[h]=a[h]||function(){
+        (a[h].q=a[h].q||[]).push(arguments)
+    };
+    o=f.createElement('script'),
+    m=f.getElementsByTagName('script')[0];
+    o.async=1; o.src=t; o.id='fathom-script';
+    m.parentNode.insertBefore(o,m)
+})(document, window, '//track.lonelil.dev/tracker.js', 'fathom');
+fathom('set', 'siteId', 'CDKEG');
+fathom('trackPageview');`}
+      </Script>
       <main className={`${billy.className} min-h-screen h-full`}>
         <Component {...pageProps} lonelil={lonelil} />
         <div

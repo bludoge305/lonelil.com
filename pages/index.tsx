@@ -43,9 +43,8 @@ export default function Home({ posts, allProjectData, lonelil }: any) {
                           <p
                             style={{
                               display: "-webkit-box",
-                              //@ts-ignore
-                              "-webkit-line-clamp": "3",
-                              "-webkit-box-orient": "vertical",
+                              WebkitLineClamp: "3",
+                              WebkitBoxOrient: "vertical",
                               overflow: "hidden",
                             }}
                           >
