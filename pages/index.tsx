@@ -26,13 +26,10 @@ export default function Home({ posts, allProjectData, lonelil }: any) {
                         }`}
                       >
                         {post.cover ? (
-                          <figure className="h-36">
+                          <figure className="h-full">
                             <img
                               src={post.cover.external.url}
                               alt={post.properties.Name.title[0].plain_text}
-                              style={{
-                                height: "unset",
-                              }}
                             />
                           </figure>
                         ) : null}
@@ -45,7 +42,7 @@ export default function Home({ posts, allProjectData, lonelil }: any) {
                               display: "-webkit-box",
                               WebkitLineClamp: "3",
                               WebkitBoxOrient: "vertical",
-                              overflow: "hidden",
+                              overflow: "scroll",
                             }}
                           >
                             {
