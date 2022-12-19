@@ -34,18 +34,6 @@ export default function App({ Component, pageProps }: AppProps) {
           property="og:description"
           content={`welcome to lonelil's website!`}
         />
-        <meta property="og:type" content="video.other" />
-        <meta
-          property="og:video:url"
-          content="https://media.discordapp.net/attachments/930053045327368192/1054281125176029287/Taylor_Swift_-_Anti-Hero_b1kbLwvqugk.mp4"
-        />
-        <meta
-          property="og:video:secure_url"
-          content="https://media.discordapp.net/attachments/930053045327368192/1054281125176029287/Taylor_Swift_-_Anti-Hero_b1kbLwvqugk.mp4"
-        />
-        <meta property="og:video:type" content="text/html" />
-        <meta property="og:video:width" content="900" />
-        <meta property="og:video:height" content="506" />
         <link
           type="application/json+oembed"
           href={encodeURI(
