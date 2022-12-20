@@ -208,7 +208,7 @@ export default function Post({ post, blocks }: any) {
               })}
             </div>
             <h1 className="text-4xl">
-              <Text text={title} />
+              <Text text={post.properties.Name.title} />
             </h1>
             <p
               style={{
