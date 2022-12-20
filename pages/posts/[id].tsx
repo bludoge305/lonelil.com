@@ -184,7 +184,7 @@ export default function Post({ post, blocks }: any) {
           key="oembed"
           type="application/json+oembed"
           href={encodeURI(
-            `https://webembed.onrender.com/oembed?provider_name=Read "${post.properties.Name.title[0].plain_text}" now only on lonelil.dev.&provider_url=https://lonelil.dev/posts/${post.id}&author_name=lonelil&author_url=https://lonelil.dev`
+            `https://webembed.onrender.com/oembed?provider_name=Read "${title}" now only on lonelil.dev.&provider_url=https://lonelil.dev/posts/${post.id}&author_name=lonelil&author_url=https://lonelil.dev`
           )}
         />
       </Head>
@@ -208,7 +208,7 @@ export default function Post({ post, blocks }: any) {
               })}
             </div>
             <h1 className="text-4xl">
-              <Text text={post.properties.Name.title} />
+              <Text text={title} />
             </h1>
             <p
               style={{
@@ -218,7 +218,7 @@ export default function Post({ post, blocks }: any) {
                 overflow: "scroll",
               }}
             >
-              {post.properties.Description.rich_text[0].plain_text}
+              {description}
             </p>
           </div>
         </div>
