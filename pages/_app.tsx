@@ -60,7 +60,7 @@ export default function App({ Component, pageProps }: AppProps) {
     m=f.getElementsByTagName('script')[0];
     o.async=1; o.src=t; o.id='fathom-script';
     m.parentNode.insertBefore(o,m)
-})(document, window, '//track.lonelil.dev/tracker.js', 'fathom');
+})(document, window, '//better.lonelil.dev/tracker.js', 'fathom');
 fathom('set', 'siteId', 'CDKEG');
 fathom('trackPageview');`}
       </Script>
