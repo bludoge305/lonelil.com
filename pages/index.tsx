@@ -30,26 +30,21 @@ export default function Home({ posts, allProjectData, lonelil }: any) {
                           <figure className="h-full">
                             <img
                               src={post.cover.external.url}
-                              alt={post.properties.Name.title[0].plain_text}
+                              alt={post.title}
                             />
                           </figure>
                         ) : null}
                         <div className="card-body">
-                          <h2 className="card-title">
-                            {post.properties.Name.title[0].plain_text}
-                          </h2>
+                          <h2 className="card-title">{post.title}</h2>
                           <p
                             style={{
                               display: "-webkit-box",
                               WebkitLineClamp: "3",
                               WebkitBoxOrient: "vertical",
-                              overflow: "scroll",
+                              overflow: "hidden",
                             }}
                           >
-                            {
-                              post.properties.Description.rich_text[0]
-                                .plain_text
-                            }
+                            {post.description}
                           </p>
                           <div className="card-actions justify-end">
                             {post.properties.Tags.multi_select.map(
@@ -119,8 +114,26 @@ export default function Home({ posts, allProjectData, lonelil }: any) {
 }
 
 export async function getStaticProps() {
-  const allPostsData = await getAllPosts();
+  let allPostsData = await getAllPosts();
   const allProjectData = getAllProjects();
+  allPostsData.forEach((post: any, i: number) => {
+    let titleJoin: any[] = [];
+    let descriptionJoin: any[] = [];
+    post.properties.Name.title.forEach((t: any) => {
+      titleJoin.push(t.plain_text);
+    });
+    post.properties.Description.rich_text.forEach((d: any) => {
+      descriptionJoin.push(d.plain_text);
+    });
+    const title = titleJoin.join("");
+    const description = descriptionJoin.join("");
+    allPostsData[i] = {
+      ...post,
+      title,
+      description,
+    };
+  });
+
   return {
     props: {
       posts: allPostsData,

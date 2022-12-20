@@ -157,32 +157,34 @@ const renderBlock = (block: any) => {
   }
 };
 
-export default function Post({ postData, blocks }: any) {
-  const title = `${postData.properties.Name.title[0].plain_text} - lonelil`;
+export default function Post({ post, blocks }: any) {
+  let titleJoin: any[] = [];
+  let descriptionJoin: any[] = [];
+  post.properties.Name.title.forEach((t: any) => {
+    titleJoin.push(t.plain_text);
+  });
+  post.properties.Description.rich_text.forEach((d: any) => {
+    descriptionJoin.push(d.plain_text);
+  });
+  const title = titleJoin.join("");
+  const description = descriptionJoin.join("");
+  const postTitle = `${title} - lonelil`;
   return (
     <>
       <Head>
-        <title>{title}</title>
-        <meta
-          key="og_title"
-          property="og:title"
-          content={postData.properties.Name.title[0].plain_text}
-        />
-        <meta
-          key="twitter_title"
-          property="twitter:title"
-          content={postData.properties.Name.title[0].plain_text}
-        />
+        <title>{postTitle}</title>
+        <meta key="og_title" property="og:title" content={title} />
+        <meta key="twitter_title" property="twitter:title" content={title} />
         <meta
           key="og_description"
           property="og:description"
-          content={postData.properties.Description.rich_text[0].plain_text}
+          content={description}
         />
         <link
           key="oembed"
           type="application/json+oembed"
           href={encodeURI(
-            `https://webembed.onrender.com/oembed?provider_name=Read "${postData.properties.Name.title[0].plain_text}" now only on lonelil.dev.&provider_url=https://lonelil.dev/posts/${postData.id}&author_name=lonelil&author_url=https://lonelil.dev`
+            `https://webembed.onrender.com/oembed?provider_name=Read "${post.properties.Name.title[0].plain_text}" now only on lonelil.dev.&provider_url=https://lonelil.dev/posts/${post.id}&author_name=lonelil&author_url=https://lonelil.dev`
           )}
         />
       </Head>
@@ -190,21 +192,23 @@ export default function Post({ postData, blocks }: any) {
       <div className="hero bg-base-200">
         <div className="hero-content text-center">
           <div className="max-w-md">
-            {postData.properties.Tags.multi_select.map((tag: any) => {
-              return (
-                <div
-                  className="badge badge-outline"
-                  key={tag.id}
-                  style={{
-                    color: tag.color,
-                  }}
-                >
-                  {tag.name}
-                </div>
-              );
-            })}
+            <div className="flex flex-wrap items-start gap-2 justify-center">
+              {post.properties.Tags.multi_select.map((tag: any) => {
+                return (
+                  <div
+                    className="badge badge-outline"
+                    key={tag.id}
+                    style={{
+                      color: tag.color,
+                    }}
+                  >
+                    {tag.name}
+                  </div>
+                );
+              })}
+            </div>
             <h1 className="text-4xl">
-              <Text text={postData.properties.Name.title} />
+              <Text text={post.properties.Name.title} />
             </h1>
             <p
               style={{
@@ -214,7 +218,7 @@ export default function Post({ postData, blocks }: any) {
                 overflow: "scroll",
               }}
             >
-              {postData.properties.Description.rich_text[0].plain_text}
+              {post.properties.Description.rich_text[0].plain_text}
             </p>
           </div>
         </div>
@@ -243,7 +247,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }: any) {
-  const postData = await getPost(params.id);
+  const post = await getPost(params.id);
   const blocks = await getBlocks(params.id);
 
   const childBlocks = await Promise.all(
@@ -266,7 +270,7 @@ export async function getStaticProps({ params }: any) {
   });
   return {
     props: {
-      postData,
+      post,
       blocks: blocksWithChildren,
     },
   };
