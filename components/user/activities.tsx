@@ -1,12 +1,17 @@
-import { Fragment } from "react";
-
 export default function Activities({ user }: any) {
   return (
-    <>
+    <div className="collapse collapse-arrow">
+      <input type="checkbox" className="min-h-0" />
       {user.activities.map((a: any, i: number) => {
         return (
-          <Fragment key={i}>
-            {i > 0 ? <br /> : null}
+          <div
+            key={i}
+            className={`${
+              i > 0
+                ? "collapse-content px-0"
+                : "collapse-title p-0 min-h-0 h-fit"
+            }`}
+          >
             {a.type === 2 ? (
               <>
                 <div
@@ -51,9 +56,9 @@ export default function Activities({ user }: any) {
                 {a.state ? `, ${a.state}` : null}
               </>
             )}
-          </Fragment>
+          </div>
         );
       })}
-    </>
+    </div>
   );
 }
