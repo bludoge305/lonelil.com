@@ -1,27 +1,31 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import { useRef, useEffect } from "react";
 import localFont from "@next/font/local";
 import Head from "next/head";
 import Script from "next/script";
 import { useLanyard } from "react-use-lanyard";
-import { loadCursor } from "../util/cursor";
 
-const billy = localFont({ src: "../fonts/billy_2.0.woff2" });
+const NeueHaasGroteskDisplay = localFont({
+  src: [
+    {
+      path: "../fonts/NeueHaasGroteskDisplay/600.woff2",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../fonts/NeueHaasGroteskDisplay/700.woff2",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+});
 
 export default function App({ Component, pageProps }: AppProps) {
   const lonelil = useLanyard({
     userId: "603129750638034957",
     socket: true,
   });
-  const ballCanvas = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    if (typeof window === "undefined" || !ballCanvas.current) {
-      return;
-    }
 
-    return loadCursor(ballCanvas.current);
-  }, []);
   return (
     <>
       <Head>
@@ -69,12 +73,10 @@ export default function App({ Component, pageProps }: AppProps) {
 fathom('set', 'siteId', 'CDKEG');
 fathom('trackPageview');`}
       </Script>
-      <main className={`${billy.className} min-h-screen h-full`}>
+      <main
+        className={`${NeueHaasGroteskDisplay.className} min-h-screen h-full`}
+      >
         <Component {...pageProps} lonelil={lonelil} />
-        <div
-          ref={ballCanvas}
-          className="ball-transitions pointer-events-none fixed z-30 h-6 w-6 rounded-full border border-black bg-transparent opacity-0 shadow-md duration-200 dark:border-white"
-        />
       </main>
     </>
   );

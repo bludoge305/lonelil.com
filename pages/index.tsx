@@ -1,8 +1,9 @@
 import { Fragment } from "react";
 import Link from "next/link";
-import User from "../components/home/user";
+import User from "../components/user/user";
 import { getAllPosts } from "../lib/posts";
 import { getAllProjects } from "../lib/projects";
+import Tags from "../components/posts/tags";
 
 export default function Home({ posts, allProjectData, lonelil }: any) {
   return (
@@ -47,21 +48,7 @@ export default function Home({ posts, allProjectData, lonelil }: any) {
                             {post.description}
                           </p>
                           <div className="card-actions justify-end">
-                            {post.properties.Tags.multi_select.map(
-                              (tag: any) => {
-                                return (
-                                  <div
-                                    className="badge badge-outline"
-                                    key={tag.id}
-                                    style={{
-                                      color: tag.color,
-                                    }}
-                                  >
-                                    {tag.name}
-                                  </div>
-                                );
-                              }
-                            )}
+                            <Tags tags={post.properties.Tags.multi_select} />
                           </div>
                         </div>
                       </li>
