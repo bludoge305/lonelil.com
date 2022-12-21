@@ -1,4 +1,4 @@
-import Image from "../Image";
+import Image from "next/image";
 
 export default function Avatar({ user }: any) {
   return (
