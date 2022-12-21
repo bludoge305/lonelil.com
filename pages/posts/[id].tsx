@@ -199,16 +199,7 @@ export default function Post({ post, blocks }: any) {
             <h1 className="text-4xl">
               <Text text={post.properties.Name.title} />
             </h1>
-            <p
-              style={{
-                display: "-webkit-box",
-                WebkitLineClamp: "3",
-                WebkitBoxOrient: "vertical",
-                overflow: "scroll",
-              }}
-            >
-              {description}
-            </p>
+            <p>{description}</p>
           </div>
         </div>
       </div>
