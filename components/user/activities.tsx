@@ -1,6 +1,6 @@
 export default function Activities({ user }: any) {
   return (
-    <div className="collapse collapse-arrow">
+    <div className="collapse-arrow collapse">
       <input type="checkbox" className="min-h-0" />
       {user.activities.map((a: any, i: number) => {
         return (
@@ -9,7 +9,7 @@ export default function Activities({ user }: any) {
             className={`${
               i > 0
                 ? "collapse-content px-0"
-                : "collapse-title p-0 min-h-0 h-fit"
+                : "collapse-title h-fit min-h-0 p-0"
             }`}
           >
             {a.type === 2 ? (

@@ -2,6 +2,7 @@ import { getAllPostIds, getPost, getBlocks } from "../../lib/posts";
 import { Fragment } from "react";
 import Link from "next/link";
 import Head from "next/head";
+import Tags from "../../components/posts/tags";
 
 export const Text = ({ text }: any) => {
   if (!text) {
@@ -17,7 +18,7 @@ export const Text = ({ text }: any) => {
         className={[
           bold ? "font-bold" : "",
           code
-            ? "font-mono bg-[rgb(242, 242, 242)] pt-0.5 pr-1 rounded-sm dark:bg-[rgb(15, 8, 28)]"
+            ? "bg-[rgb(242, 242, 242)] dark:bg-[rgb(15, 8, 28)] rounded-sm pt-0.5 pr-1 font-mono"
             : "",
           italic ? "italic" : "",
           strikethrough ? "line-through" : "",
@@ -120,8 +121,8 @@ const renderBlock = (block: any) => {
       return <blockquote key={id}>{value.rich_text[0].plain_text}</blockquote>;
     case "code":
       return (
-        <pre className="bg-[rgb(242, 242, 242)] pt-0.5 pr-1 mt-5 mr-0 leading-loose rounded-xl overflow-auto dark:bg-[rgb(15, 8, 28)] hover:bg-[rgba(55, 53, 47, 0.08)] hover:cursor-pointer hover:rounded-sm dark:hover:bg-[rgba(255, 255, 255, 0.1)] dark:hover:cursor-pointer dark:hover:rounded-sm">
-          <code className="pt-5 font-mono flex flex-wrap" key={id}>
+        <pre className="bg-[rgb(242, 242, 242)] dark:bg-[rgb(15, 8, 28)] hover:bg-[rgba(55, 53, 47, 0.08)] dark:hover:bg-[rgba(255, 255, 255, 0.1)] mt-5 mr-0 overflow-auto rounded-xl pt-0.5 pr-1 leading-loose hover:cursor-pointer hover:rounded-sm dark:hover:cursor-pointer dark:hover:rounded-sm">
+          <code className="flex flex-wrap pt-5 font-mono" key={id}>
             {value.rich_text[0].plain_text}
           </code>
         </pre>
@@ -146,7 +147,7 @@ const renderBlock = (block: any) => {
     case "bookmark":
       const href = value.url;
       return (
-        <a href={href} target="_brank" className="block mb-3">
+        <a href={href} target="_brank" className="mb-3 block">
           {href}
         </a>
       );
@@ -192,20 +193,8 @@ export default function Post({ post, blocks }: any) {
       <div className="hero bg-base-200">
         <div className="hero-content text-center">
           <div className="max-w-md">
-            <div className="flex flex-wrap items-start gap-2 justify-center">
-              {post.properties.Tags.multi_select.map((tag: any) => {
-                return (
-                  <div
-                    className="badge badge-outline"
-                    key={tag.id}
-                    style={{
-                      color: tag.color,
-                    }}
-                  >
-                    {tag.name}
-                  </div>
-                );
-              })}
+            <div className="mb-2 flex flex-wrap items-start justify-center gap-2">
+              <Tags tags={post.properties.Tags.multi_select} />
             </div>
             <h1 className="text-4xl">
               <Text text={post.properties.Name.title} />
@@ -226,12 +215,12 @@ export default function Post({ post, blocks }: any) {
 
       <article className="blog-post">
         <section>
-          <Link href="/" className="inline-block mb-5">
-            ← Go home
-          </Link>
           {blocks.map((block: any) => (
             <Fragment key={block.id}>{renderBlock(block)}</Fragment>
           ))}
+          <Link href="/" className="my-5 inline-block">
+            ← Go home
+          </Link>
         </section>
       </article>
     </>

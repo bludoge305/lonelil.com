@@ -74,7 +74,7 @@ fathom('set', 'siteId', 'CDKEG');
 fathom('trackPageview');`}
       </Script>
       <main
-        className={`${NeueHaasGroteskDisplay.className} min-h-screen h-full text-[#d4c2b6]`}
+        className={`${NeueHaasGroteskDisplay.className} h-full min-h-screen text-[#d4c2b6]`}
       >
         <Component {...pageProps} lonelil={lonelil} />
       </main>

@@ -8,12 +8,12 @@ import Tags from "../components/posts/tags";
 export default function Home({ posts, allProjectData, lonelil }: any) {
   return (
     <>
-      <div className="py-28 grid grid-cols-12">
+      <div className="grid grid-cols-12 py-28">
         <div className="col-auto inline-grid"></div>
-        <div className="col-span-10 md:col-span-4 lg:col-span-3 inline-grid">
+        <div className="col-span-10 inline-grid md:col-span-4 lg:col-span-3">
           <div className="mb-10">
             <User lonelil={lonelil} />
-            <p className="text-3xl mt-3">welcome to my website!</p>
+            <p className="mt-3 text-3xl">welcome to my website!</p>
           </div>
           <div>
             <h1 className="text-4xl">my blog</h1>
@@ -23,7 +23,7 @@ export default function Home({ posts, allProjectData, lonelil }: any) {
                   {post.properties.Public.checkbox ? (
                     <Link href={`/posts/${post.id}`}>
                       <li
-                        className={`card bg-primary shadow-xl mb-3  ${
+                        className={`card mb-3 bg-primary shadow-xl  ${
                           post.cover ? "image-full" : ""
                         }`}
                       >
@@ -58,11 +58,11 @@ export default function Home({ posts, allProjectData, lonelil }: any) {
               ))}
             </ul>
           </div>
-          <h1 className="text-4xl my-3 md:hidden">Projects</h1>
+          <h1 className="my-3 text-4xl md:hidden">Projects</h1>
           <div className="grid w-full grid-cols-1 gap-4 md:hidden">
             {allProjectData.map(({ id, name, description, image }: any) => (
               <div
-                className="card card-compact h-50 bg-secondary shadow-xl"
+                className="h-50 card card-compact bg-secondary shadow-xl"
                 key={id}
               >
                 <figure>
@@ -76,12 +76,12 @@ export default function Home({ posts, allProjectData, lonelil }: any) {
             ))}
           </div>
         </div>
-        <div className="md:col-span-7 md:inline-grid hidden">
-          <h1 className="text-4xl my-3 px-6">Projects</h1>
+        <div className="hidden md:col-span-7 md:inline-grid">
+          <h1 className="my-3 px-6 text-4xl">Projects</h1>
           <div className="grid w-full grid-cols-1 gap-4 px-6 py-5 md:grid-cols-2">
             {allProjectData.map(({ id, name, description, image }: any) => (
               <div
-                className="card card-compact h-50 bg-secondary shadow-xl"
+                className="h-50 card card-compact bg-secondary shadow-xl"
                 key={id}
               >
                 <figure>

@@ -11,9 +11,9 @@ export default function user({ lonelil }: any) {
         <Oval
           height={56}
           width={56}
-          color="#60718f"
+          color="#4c3b2d"
           visible={true}
-          secondaryColor="#60718f"
+          secondaryColor="#4c3b2d"
         />
       )}
       <div className="flex flex-col">
@@ -22,7 +22,7 @@ export default function user({ lonelil }: any) {
           {!lonelil.loading ? (
             <Activities user={lonelil.status} />
           ) : (
-            <ThreeDots height="48" width="48" color="#60718f" visible={true} />
+            <ThreeDots height="48" width="48" color="#4c3b2d" visible={true} />
           )}
         </div>
       </div>

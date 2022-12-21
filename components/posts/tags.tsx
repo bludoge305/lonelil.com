@@ -4,7 +4,7 @@ export default function Tags({ tags }: any) {
       {tags.map((tag: any) => {
         return (
           <div
-            className="badge badge-outline"
+            className="badge-outline badge"
             key={tag.id}
             style={{
               color: tag.color,
