@@ -1,4 +1,5 @@
 import Tags from "./tags";
+import Image from "../Image";
 
 export default function PostCard({ post }: any) {
   return (
@@ -9,14 +10,15 @@ export default function PostCard({ post }: any) {
     >
       {post.cover ? (
         <figure className="h-full">
-          <img
+          <Image
             src={
               post.cover.external
                 ? post.cover.external.url
                 : post.cover.file.url
             }
             alt={post.title || post.properties.Name.title[0].plain_text}
-            loading="lazy"
+            width={500}
+            height={500}
           />
         </figure>
       ) : null}

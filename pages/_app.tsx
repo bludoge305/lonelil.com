@@ -55,11 +55,6 @@ export default function App({ Component, pageProps }: AppProps) {
           )}
         />
       </Head>
-      <Script
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5836961899645264"
-        strategy="beforeInteractive"
-      ></Script>
       <Script id="fathom-load" strategy="lazyOnload">
         {`(function(f, a, t, h, o, m){
     a[h]=a[h]||function(){

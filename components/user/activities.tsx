@@ -1,8 +1,10 @@
+import Image from "../Image";
+
 export default function Activities({ user }: any) {
   return (
     <>
       {user.activities[0] ? (
-        <div className="collapse-arrow collapse">
+        <div className={`collapse`}>
           <input type="checkbox" className="min-h-0" />
           {user.activities.map((a: any, i: number) => {
             return (
@@ -20,13 +22,12 @@ export default function Activities({ user }: any) {
                       className="tooltip tooltip-primary"
                       data-tip={user.spotify.album}
                     >
-                      <img
+                      <Image
                         src={user.spotify.album_art_url}
                         width={20}
                         height={20}
                         className="inline-block rounded-xl"
                         alt={user.spotify.album}
-                        loading="lazy"
                       />
                     </div>{" "}
                     Listening to {user.spotify.song} by {user.spotify.artist}
@@ -37,7 +38,7 @@ export default function Activities({ user }: any) {
                       className="tooltip tooltip-primary"
                       data-tip={a.assets.large_text}
                     >
-                      <img
+                      <Image
                         src={
                           a.assets.large_image.startsWith("mp:external")
                             ? a.assets.large_image.replace(
@@ -50,7 +51,6 @@ export default function Activities({ user }: any) {
                         height={20}
                         className="inline-block rounded-xl"
                         alt={a.assets.large_text}
-                        loading="lazy"
                       />
                     </div>{" "}
                     Playing {a.name}
@@ -58,6 +58,7 @@ export default function Activities({ user }: any) {
                     {a.state ? `, ${a.state}` : null}
                   </>
                 )}
+                {i == 0 && user.activities[1] ? "..." : ""}
               </div>
             );
           })}
