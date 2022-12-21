@@ -32,9 +32,7 @@ export default function Home({ posts, projects, lonelil }: any) {
           {projects.map((project: any) => (
             <div className="carousel-item w-96" key={project.id}>
               {project.properties.Public.checkbox ? (
-                <Link href={`/posts/${project.id}`}>
-                  <PostCard post={project} />
-                </Link>
+                <PostCard post={project} />
               ) : null}
             </div>
           ))}
