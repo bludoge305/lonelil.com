@@ -30,7 +30,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>lonelil</title>
-        <meta name="theme-color" content="#4c3b2d" />
+        <meta name="theme-color" content="#0d161d" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           key="og_title"
