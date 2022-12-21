@@ -3,106 +3,76 @@ import Link from "next/link";
 import User from "../components/user/user";
 import { getAllPosts } from "../lib/posts";
 import { getAllProjects } from "../lib/projects";
-import Tags from "../components/posts/tags";
+import PostCard from "../components/posts/postCard";
 
-export default function Home({ posts, allProjectData, lonelil }: any) {
+export default function Home({ posts, projects, lonelil }: any) {
   return (
-    <>
-      <div className="grid grid-cols-12 py-28">
-        <div className="col-auto inline-grid"></div>
-        <div className="col-span-10 inline-grid md:col-span-4 lg:col-span-3">
-          <div className="mb-10">
-            <User lonelil={lonelil} />
-            <p className="mt-3 text-3xl">welcome to my website!</p>
-          </div>
-          <div>
-            <h1 className="text-4xl">my blog</h1>
-            <ul className="mt-5">
-              {posts.map((post: any) => (
-                <Fragment key={post.id}>
-                  {post.properties.Public.checkbox ? (
-                    <Link href={`/posts/${post.id}`}>
-                      <li
-                        className={`card mb-3 bg-primary shadow-xl  ${
-                          post.cover ? "image-full" : ""
-                        }`}
-                      >
-                        {post.cover ? (
-                          <figure className="h-full">
-                            <img
-                              src={post.cover.external.url}
-                              alt={post.title}
-                            />
-                          </figure>
-                        ) : null}
-                        <div className="card-body">
-                          <h2 className="card-title">{post.title}</h2>
-                          <p
-                            style={{
-                              display: "-webkit-box",
-                              WebkitLineClamp: "3",
-                              WebkitBoxOrient: "vertical",
-                              overflow: "hidden",
-                            }}
-                          >
-                            {post.description}
-                          </p>
-                          <div className="card-actions justify-end">
-                            <Tags tags={post.properties.Tags.multi_select} />
-                          </div>
-                        </div>
-                      </li>
-                    </Link>
-                  ) : null}
-                </Fragment>
-              ))}
-            </ul>
-          </div>
-          <h1 className="my-3 text-4xl md:hidden">Projects</h1>
-          <div className="grid w-full grid-cols-1 gap-4 md:hidden">
-            {allProjectData.map(({ id, name, description, image }: any) => (
-              <div
-                className="h-50 card card-compact bg-secondary shadow-xl"
-                key={id}
-              >
-                <figure>
-                  <img src={image} alt={name} loading="lazy" />
-                </figure>
-                <div className="card-body">
-                  <h2 className="card-title">{name}</h2>
-                  <p>{description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+    <div className="grid grid-cols-4 gap-4 py-28 px-12">
+      <div className="col-span-4 pb-5">
+        <User lonelil={lonelil} />
+      </div>
+
+      <div className="col-span-4 hidden h-72 md:block">
+        <p className="mt-3 text-3xl">My Blog!</p>
+        <div className="carousel-center carousel rounded-box h-72 max-w-full space-x-4 py-4">
+          {posts.map((post: any) => (
+            <div className="carousel-item w-96" key={post.id}>
+              {post.properties.Public.checkbox ? (
+                <Link href={`/posts/${post.id}`}>
+                  <PostCard post={post} />
+                </Link>
+              ) : null}
+            </div>
+          ))}
         </div>
-        <div className="hidden md:col-span-7 md:inline-grid">
-          <h1 className="my-3 px-6 text-4xl">Projects</h1>
-          <div className="grid w-full grid-cols-1 gap-4 px-6 py-5 md:grid-cols-2">
-            {allProjectData.map(({ id, name, description, image }: any) => (
-              <div
-                className="h-50 card card-compact bg-secondary shadow-xl"
-                key={id}
-              >
-                <figure>
-                  <img src={image} alt={name} loading="lazy" />
-                </figure>
-                <div className="card-body">
-                  <h2 className="card-title">{name}</h2>
-                  <p>{description}</p>
-                </div>
-              </div>
+      </div>
+      <div className="col-span-4 hidden h-72 pt-8 md:block">
+        <p className="mt-3 text-3xl">My Projects!</p>
+        <div className="carousel-center carousel rounded-box h-72 max-w-full space-x-4 py-4">
+          {projects.map((project: any) => (
+            <div className="carousel-item w-96" key={project.id}>
+              {project.properties.Public.checkbox ? (
+                <Link href={`/posts/${project.id}`}>
+                  <PostCard post={project} />
+                </Link>
+              ) : null}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="col-span-4 block h-72 md:hidden">
+        <div>
+          <p className="my-3 text-3xl">My Blog!</p>
+          {posts.map((post: any) => (
+            <Fragment key={post.id}>
+              {post.properties.Public.checkbox ? (
+                <Link href={`/posts/${post.id}`}>
+                  <PostCard post={post} />
+                </Link>
+              ) : null}
+            </Fragment>
+          ))}
+        </div>
+        <div>
+          <p className="my-3 text-3xl">My Projects!</p>
+          <div>
+            {projects.map((project: any) => (
+              <Fragment key={project.id}>
+                {project.properties.Public.checkbox ? (
+                  <PostCard post={project} />
+                ) : null}
+              </Fragment>
             ))}
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
 export async function getStaticProps() {
   let allPostsData = await getAllPosts();
-  const allProjectData = getAllProjects();
+  let allProjectData = await getAllProjects();
   allPostsData.forEach((post: any, i: number) => {
     let titleJoin: any[] = [];
     let descriptionJoin: any[] = [];
@@ -124,7 +94,7 @@ export async function getStaticProps() {
   return {
     props: {
       posts: allPostsData,
-      allProjectData,
+      projects: allProjectData,
     },
   };
 }

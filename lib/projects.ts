@@ -1,19 +1,32 @@
-import fs from "fs";
-import path from "path";
+import { Client } from "@notionhq/client";
+const notion = new Client({
+  auth: process.env.NOTION_TOKEN,
+});
+const database_id = process.env.NOTION_PROJECTS_DATABASE_ID as string;
 
-const projectsDirectory = path.join(process.cwd(), "projects");
+export async function getAllProjects() {
+  const posts = await notion.databases.query({
+    database_id,
+  });
+  return posts.results;
+}
 
-export function getAllProjects() {
-  const fileNames = fs.readdirSync(projectsDirectory);
+export async function getAllProjectsIds() {
+  const posts = await notion.databases.query({
+    database_id,
+  });
 
-  return fileNames.map((fileName) => {
-    const file = JSON.parse(
-      fs.readFileSync(`${projectsDirectory}/${fileName}`, "utf8")
-    );
-
+  return posts.results.map((post: any) => {
     return {
-      id: fileName.replace(/\.json$/, ""),
-      ...file,
+      params: {
+        id: post.id,
+      },
     };
   });
+}
+
+export async function getProject(id: string) {
+  const post = await notion.pages.retrieve({ page_id: id });
+
+  return post;
 }
