@@ -7,7 +7,6 @@ import Navbar from "../components/ui/navbar";
 import Footer from "../components/ui/footer";
 import { useLanyard } from "react-use-lanyard";
 
-
 const NeueHaasGroteskDisplay = localFont({
   src: [
     {
@@ -21,6 +20,7 @@ const NeueHaasGroteskDisplay = localFont({
       style: "normal",
     },
   ],
+  display: "swap",
 });
 
 export default function App({ Component, pageProps }: AppProps) {

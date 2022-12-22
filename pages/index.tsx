@@ -3,7 +3,7 @@ import Link from "next/link";
 import User from "../components/user/user";
 import { getAllPosts } from "../lib/posts";
 import { getAllProjects } from "../lib/projects";
-import PostCard from "../components/posts/postCard";
+import PostCard from "../components/blog/postCard";
 
 export default function Home({ posts, projects, lonelil }: any) {
   return (
@@ -19,7 +19,7 @@ export default function Home({ posts, projects, lonelil }: any) {
             {posts.map((post: any) => (
               <div className="carousel-item w-96" key={post.id}>
                 {post.properties.Public.checkbox ? (
-                  <Link href={`/posts/${post.id}`}>
+                  <Link href={`/blog/${post.id}`}>
                     <PostCard post={post} />
                   </Link>
                 ) : null}
@@ -45,7 +45,7 @@ export default function Home({ posts, projects, lonelil }: any) {
             {posts.map((post: any) => (
               <Fragment key={post.id}>
                 {post.properties.Public.checkbox ? (
-                  <Link href={`/posts/${post.id}`}>
+                  <Link href={`/blog/${post.id}`}>
                     <PostCard post={post} />
                   </Link>
                 ) : null}
@@ -96,5 +96,6 @@ export async function getStaticProps() {
       posts: allPostsData,
       projects: allProjectData,
     },
+    revalidate: 1800,
   };
 }

@@ -17,7 +17,9 @@ export default function Footer({ lonelil }: any) {
           />
         )}
 
-        <p>lonelil</p>
+        <p className="pl-1">
+          © {new Date().getFullYear()} lonelil. All Rights Reserved.
+        </p>
       </div>
     </footer>
   );

@@ -1,5 +1,9 @@
 import Image from "next/image";
 
+const ignoreLoader = ({ src }: any) => {
+  return src;
+};
+
 export default function Avatar({ user, footer }: any) {
   return (
     <div className="avatar">
@@ -9,7 +13,7 @@ export default function Avatar({ user, footer }: any) {
         }`}
       >
         <Image
-          src={`https://cdn.discordapp.com/avatars/${user.discord_user.id}/${user.discord_user.avatar}.webp`}
+          src={`https://cdn.discordapp.com/avatars/${user.discord_user.id}/${user.discord_user.avatar}.webp?size=160`}
           alt={user.discord_user.username}
           width={128}
           height={128}
@@ -17,7 +21,8 @@ export default function Avatar({ user, footer }: any) {
       </div>
       {user.discord_user.avatar_decoration ? (
         <Image
-          src={`https://cdn.discordapp.com/avatar-decorations/${user.discord_user.id}/${user.discord_user.avatar_decoration}.webp`}
+          loader={ignoreLoader}
+          src={`https://cdn.discordapp.com/avatar-decorations/${user.discord_user.id}/${user.discord_user.avatar_decoration}.png`}
           className="absolute scale-125"
           alt={`${user.discord_user.username}'s Avatar Decoration`}
           width={70}

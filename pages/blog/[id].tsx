@@ -2,7 +2,7 @@ import { getAllPostIds, getPost, getBlocks } from "../../lib/posts";
 import { Fragment } from "react";
 import Link from "next/link";
 import Head from "next/head";
-import Tags from "../../components/posts/tags";
+import Tags from "../../components/blog/tags";
 
 export const Text = ({ text }: any) => {
   if (!text) {
@@ -222,7 +222,7 @@ export async function getStaticPaths() {
   const paths = await getAllPostIds();
   return {
     paths,
-    fallback: false,
+    fallback: "blocking",
   };
 }
 
