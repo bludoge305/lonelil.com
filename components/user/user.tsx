@@ -1,4 +1,4 @@
-import { Oval, ThreeDots } from "react-loader-spinner";
+import { Oval } from "react-loader-spinner";
 import Avatar from "./avatar";
 import Activities from "./activities";
 
@@ -22,7 +22,7 @@ export default function user({ lonelil }: any) {
           {!lonelil.loading ? (
             <Activities user={lonelil.status} />
           ) : (
-            <ThreeDots height="48" width="48" color="#4c3b2d" visible={true} />
+            null
           )}
         </div>
       </div>

@@ -4,6 +4,7 @@ import localFont from "@next/font/local";
 import Head from "next/head";
 import Script from "next/script";
 import { useLanyard } from "react-use-lanyard";
+import Navbar from "../components/ui/navbar";
 
 const NeueHaasGroteskDisplay = localFont({
   src: [
@@ -71,6 +72,7 @@ fathom('trackPageview');`}
       <main
         className={`${NeueHaasGroteskDisplay.className} h-full min-h-screen text-[#d4c2b6]`}
       >
+        <Navbar />
         <Component {...pageProps} lonelil={lonelil} />
       </main>
     </>

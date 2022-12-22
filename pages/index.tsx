@@ -8,7 +8,7 @@ import PostCard from "../components/posts/postCard";
 export default function Home({ posts, projects, lonelil }: any) {
   return (
     <>
-      <div className="grid grid-cols-4 gap-4 py-28 px-12">
+      <div className="grid grid-cols-4 gap-4 pb-28 pt-12 px-12">
         <div className="col-span-4 pb-5">
           <User lonelil={lonelil} />
         </div>
