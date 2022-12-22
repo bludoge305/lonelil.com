@@ -1,10 +1,12 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import localFont from "@next/font/local";
 import Head from "next/head";
 import Script from "next/script";
-import { useLanyard } from "react-use-lanyard";
+import localFont from "@next/font/local";
 import Navbar from "../components/ui/navbar";
+import Footer from "../components/ui/footer";
+import { useLanyard } from "react-use-lanyard";
+
 
 const NeueHaasGroteskDisplay = localFont({
   src: [
@@ -74,6 +76,7 @@ fathom('trackPageview');`}
       >
         <Navbar />
         <Component {...pageProps} lonelil={lonelil} />
+        <Footer lonelil={lonelil} />
       </main>
     </>
   );

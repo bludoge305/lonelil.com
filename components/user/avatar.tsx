@@ -1,10 +1,10 @@
 import Image from "next/image";
 
-export default function Avatar({ user }: any) {
+export default function Avatar({ user, footer }: any) {
   return (
     <div className="avatar">
       <div
-        className={`w-14 rounded-full ring ring-${
+        className={`${footer ? "w-9" : "w-14"} rounded-full ring ring-${
           user.discord_status ? user.discord_status : "ring-primary"
         }`}
       >
