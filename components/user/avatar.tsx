@@ -1,15 +1,12 @@
 import Image from "next/image";
-
-const ignoreLoader = ({ src }: any) => {
-  return src;
-};
+import { ignoreLoader } from "../../lib/ignoreLoader";
 
 export default function Avatar({ user, footer }: any) {
   return (
     <div className="avatar">
       <div
         className={`${footer ? "w-9" : "w-14"} rounded-full ring ring-${
-          user.discord_status ? user.discord_status : "ring-primary"
+          user.discord_status
         }`}
       >
         <Image
