@@ -10,7 +10,7 @@ export default function Custom404() {
           </h2>
           <p className="text-2xl font-semibold md:text-3xl">Sorry</p>
           <p className="mt-4 mb-8 text-xl">
-            We couldn't find the page that you're looking for!
+            We couldn&apos;t find the page that you&apos;re looking for!
           </p>
           <Link
             href={"/"}
