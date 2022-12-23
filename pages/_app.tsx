@@ -73,7 +73,7 @@ fathom('set', 'siteId', 'CDKEG');
 fathom('trackPageview');`}
       </Script>
       <main
-        className={`${NeueHaasGroteskDisplay.className} h-full min-h-screen text-[#d4c2b6]`}
+        className={`${NeueHaasGroteskDisplay.className} min-h-screen text-[#d4c2b6]`}
       >
         <Snowfall />
         <Navbar />

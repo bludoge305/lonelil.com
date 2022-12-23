@@ -1,13 +1,13 @@
 import Image from "next/image";
 import { ignoreLoader } from "../../lib/ignoreLoader";
 
-export default function Avatar({ user, footer }: any) {
+export default function Avatar({ user, footer, links }: any) {
   return (
     <div className="avatar">
       <div
-        className={`${footer ? "w-9" : "w-14"} rounded-full ring ring-${
-          user.discord_status
-        }`}
+        className={`${
+          footer ? "w-9" : links ? "w-24" : "w-14"
+        } rounded-full ring ring-${user.discord_status}`}
       >
         <Image
           src={`https://cdn.discordapp.com/avatars/${user.discord_user.id}/${user.discord_user.avatar}.webp?size=160`}
