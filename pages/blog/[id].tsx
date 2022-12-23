@@ -185,7 +185,7 @@ export default function Post({ post, blocks }: any) {
           key="oembed"
           type="application/json+oembed"
           href={encodeURI(
-            `https://webembed.onrender.com/oembed?provider_name=Read "${title}" now only on lonelil.dev.&provider_url=https://lonelil.dev/posts/${post.id}&author_name=lonelil&author_url=https://lonelil.dev`
+            `https://webembed.onrender.com/oembed?provider_name=Read "${title}" now only on lonelil.dev.&provider_url=https://lonelil.dev/blog/${post.id}&author_name=lonelil&author_url=https://lonelil.dev`
           )}
         />
       </Head>
