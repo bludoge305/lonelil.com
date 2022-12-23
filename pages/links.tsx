@@ -49,6 +49,7 @@ export default function Links({ lonelil }: any) {
             className="btn-primary btn-block btn mb-5 gap-1 hover:btn-secondary"
             href="https://github.com/lonelil"
             target={"_blank"}
+            rel={"noreferrer"}
           >
             <AiFillGithub size={21} />
             Github
@@ -57,6 +58,7 @@ export default function Links({ lonelil }: any) {
             className="btn-primary btn-block btn mb-5 gap-1 hover:btn-secondary"
             href="https://discord.com/users/603129750638034957"
             target={"_blank"}
+            rel={"noreferrer"}
           >
             <FaDiscord size={21} />
             Discord
@@ -65,6 +67,7 @@ export default function Links({ lonelil }: any) {
             className="btn-primary btn-block btn mb-5 gap-1 hover:btn-secondary"
             href="https://open.spotify.com/user/313nbftyxt3lhn2htnz2tsmvaz4m"
             target={"_blank"}
+            rel={"noreferrer"}
           >
             <FaSpotify size={21} />
             Spotify
@@ -73,6 +76,7 @@ export default function Links({ lonelil }: any) {
             className="btn-primary btn-block btn mb-5 gap-1 hover:btn-secondary"
             href="https://twitter.com/lonelilpublic"
             target={"_blank"}
+            rel={"noreferrer"}
           >
             <FaTwitter size={21} />
             Twitter
