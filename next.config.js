@@ -27,6 +27,24 @@ const nextConfig = {
         port: "",
         pathname: "/avatar-decorations/603129750638034957/**",
       },
+      {
+        protocol: "https",
+        hostname: "cdn.discordapp.com",
+        port: "",
+        pathname: "/app-assets/**",
+      },
+      {
+        protocol: "https",
+        hostname: "media.discordapp.net",
+        port: "",
+        pathname: "/external/**",
+      },
+      {
+        protocol: "https",
+        hostname: "i.scdn.co",
+        port: "",
+        pathname: "/image/**",
+      },
     ],
   },
 };
