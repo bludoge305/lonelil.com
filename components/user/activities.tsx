@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { ignoreLoader } from "../../lib/ignoreLoader";
 
 export default function Activities({ user }: any) {
   return (
@@ -24,7 +23,6 @@ export default function Activities({ user }: any) {
                       data-tip={user.spotify.album}
                     >
                       <Image
-                        loader={ignoreLoader}
                         src={user.spotify.album_art_url}
                         width={20}
                         height={20}
@@ -41,7 +39,6 @@ export default function Activities({ user }: any) {
                       data-tip={a.assets.large_text}
                     >
                       <Image
-                        loader={ignoreLoader}
                         src={
                           a.assets.large_image.startsWith("mp:external")
                             ? a.assets.large_image.replace(
