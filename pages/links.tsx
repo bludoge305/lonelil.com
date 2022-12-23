@@ -6,7 +6,7 @@ import { FaDiscord, FaSpotify, FaTwitter } from "react-icons/fa";
 
 export default function Links({ lonelil }: any) {
   return (
-    <section className="h-full min-h-screen items-center py-16 md:px-96">
+    <section className="h-full min-h-screen items-center py-16 lg:px-96">
       <div className="container mx-auto flex flex-col items-center justify-center">
         <div className="max-w-md text-center">
           {!lonelil.loading ? (

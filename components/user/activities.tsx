@@ -32,6 +32,26 @@ export default function Activities({ user }: any) {
                     </div>{" "}
                     Listening to {user.spotify.song} by {user.spotify.artist}
                   </>
+                ) : a.type === 4 ? (
+                  <>
+                    {a.emoji.id ? (
+                      <div
+                        className="tooltip tooltip-primary"
+                        data-tip={a.emoji.name}
+                      >
+                        <Image
+                          src={`https://cdn.discordapp.com/emojis/${a.emoji.id}.webp`}
+                          width={20}
+                          height={20}
+                          className="inline-block rounded-xl"
+                          alt={a.emoji.name}
+                        />
+                      </div>
+                    ) : (
+                      a.emoji.name
+                    )}{" "}
+                    {a.state}
+                  </>
                 ) : (
                   <>
                     <div
