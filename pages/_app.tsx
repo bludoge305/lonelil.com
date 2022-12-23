@@ -6,6 +6,7 @@ import localFont from "@next/font/local";
 import Navbar from "../components/ui/navbar";
 import Footer from "../components/ui/footer";
 import { useLanyard } from "react-use-lanyard";
+import Snowfall from "../components/ui/snowfall";
 
 const NeueHaasGroteskDisplay = localFont({
   src: [
@@ -74,6 +75,7 @@ fathom('trackPageview');`}
       <main
         className={`${NeueHaasGroteskDisplay.className} h-full min-h-screen text-[#d4c2b6]`}
       >
+        <Snowfall />
         <Navbar />
         <Component {...pageProps} lonelil={lonelil} />
         <Footer lonelil={lonelil} />
