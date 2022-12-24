@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     env:
       NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
       NOTION_BLOG_DATABASE_ID: ${{ secrets.NOTION_BLOG_DATABASE_ID }}
@@ -27,4 +27,11 @@ jobs:
           cache: "yarn"
       - run: yarn install
       - run: yarn build
-      - run: pm2 restart lonelildev
+
+      - uses: sylwit/install-b2-cli-action@v1.0.0
+        env:
+          B2_APPLICATION_KEY_ID: ${{ secrets.B2_APPLICATION_KEY_ID }}
+          B2_APPLICATION_KEY: ${{ secrets.B2_APPLICATION_KEY }}
+      
+      - name: Deploy
+        run: b2 sync --delete --replaceNewer ./out b2://lonelildev

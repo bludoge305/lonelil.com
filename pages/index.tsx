@@ -96,6 +96,5 @@ export async function getStaticProps() {
       posts: allPostsData,
       projects: allProjectData,
     },
-    revalidate: 60,
   };
 }

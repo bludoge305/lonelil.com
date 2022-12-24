@@ -1,6 +1,6 @@
 import { getAllPosts } from "../../lib/posts";
 import { Fragment } from "react";
-import PostCard from "../../components/blog/postCard"
+import PostCard from "../../components/blog/postCard";
 import Link from "next/link";
 
 export default function Blog({ posts }: any) {
@@ -36,6 +36,5 @@ export async function getStaticProps() {
     props: {
       posts: allPostsData,
     },
-    revalidate: 60,
   };
 }
