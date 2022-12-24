@@ -10,7 +10,7 @@ export default function Navbar() {
     <div
       className={`navbar sticky top-0 z-50 transition-colors ${
         scrollPosition > 0
-          ? "bg-opacity-60 bg-clip-padding shadow-none backdrop-blur-xl backdrop-filter"
+          ? "bg-opacity-100 bg-clip-padding shadow-none backdrop-blur-xl backdrop-filter"
           : "bg-base-200 shadow"
       }`}
     >
