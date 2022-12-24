@@ -8,10 +8,8 @@ export default function Navbar() {
 
   return (
     <div
-      className={`navbar sticky top-0 z-50 transition-colors ${
-        scrollPosition > 0
-          ? "bg-opacity-100 bg-clip-padding shadow-none backdrop-blur-xl backdrop-filter"
-          : "bg-base-200 shadow"
+      className={`navbar sticky top-0 z-50 border-b-[0.5px] border-b-[#d4c2b6] transition-colors ${
+        scrollPosition > 0 ? "backdrop-blur-sm backdrop-filter" : "bg-base-200"
       }`}
     >
       <div className="navbar-start">
@@ -39,7 +37,7 @@ export default function Navbar() {
         </div>
       </div>
       <div className="navbar-center">
-        <p className="text-xl normal-case">lonelil</p>
+        <p className="text-3xl normal-case">lonelil</p>
       </div>
       <div className="navbar-end">
         <Link href={"/links"} className="btn-ghost btn-circle btn">
