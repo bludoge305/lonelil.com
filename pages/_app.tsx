@@ -5,7 +5,6 @@ import localFont from "@next/font/local";
 import Navbar from "../components/ui/navbar";
 import Footer from "../components/ui/footer";
 import { useLanyard } from "react-use-lanyard";
-import Snowfall from "../components/ui/snowfall";
 
 const NeueHaasGroteskDisplay = localFont({
   src: [
@@ -61,7 +60,6 @@ export default function App({ Component, pageProps }: AppProps) {
       <main
         className={`${NeueHaasGroteskDisplay.className} min-h-screen text-[#d4c2b6]`}
       >
-        <Snowfall />
         <Navbar />
         <Component {...pageProps} lonelil={lonelil} />
         <Footer lonelil={lonelil} />
