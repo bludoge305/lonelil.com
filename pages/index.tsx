@@ -1,8 +1,7 @@
 import { Fragment } from "react";
 import Link from "next/link";
 import User from "../components/user/user";
-import { getAllPosts } from "../lib/posts";
-import { getAllProjects } from "../lib/projects";
+import { getDocuments } from "outstatic/server";
 import PostCard from "../components/blog/postCard";
 
 export default function Home({ posts, projects, lonelil }: any) {
@@ -17,9 +16,9 @@ export default function Home({ posts, projects, lonelil }: any) {
           <p className="mt-3 text-3xl">My Blog!</p>
           <div className="carousel-center carousel rounded-box h-72 max-w-full space-x-4 py-4">
             {posts.map((post: any) => (
-              <div className="carousel-item w-96" key={post.id}>
-                {post.properties.Public.checkbox ? (
-                  <Link href={`/blog/${post.id}`}>
+              <div className="carousel-item w-96" key={post.slug}>
+                {post.status == "published" ? (
+                  <Link href={`/blog/${post.slug}`} className="w-full">
                     <PostCard post={post} />
                   </Link>
                 ) : null}
@@ -31,9 +30,11 @@ export default function Home({ posts, projects, lonelil }: any) {
           <p className="mt-3 text-3xl">My Projects!</p>
           <div className="carousel-center carousel rounded-box h-72 max-w-full space-x-4 py-4">
             {projects.map((project: any) => (
-              <div className="carousel-item w-96" key={project.id}>
-                {project.properties.Public.checkbox ? (
-                  <PostCard post={project} />
+              <div className="carousel-item w-96" key={project.slug}>
+                {project.status == "published" ? (
+                  <Link href={`/project/${project.slug}`} className="w-full">
+                    <PostCard post={project} />
+                  </Link>
                 ) : null}
               </div>
             ))}
@@ -43,9 +44,9 @@ export default function Home({ posts, projects, lonelil }: any) {
           <div>
             <p className="my-3 text-3xl">My Blog!</p>
             {posts.map((post: any) => (
-              <Fragment key={post.id}>
-                {post.properties.Public.checkbox ? (
-                  <Link href={`/blog/${post.id}`}>
+              <Fragment key={post.slug}>
+                {post.status == "published" ? (
+                  <Link href={`/blog/${post.slug}`} className="w-full">
                     <PostCard post={post} />
                   </Link>
                 ) : null}
@@ -57,8 +58,10 @@ export default function Home({ posts, projects, lonelil }: any) {
             <div>
               {projects.map((project: any) => (
                 <Fragment key={project.id}>
-                  {project.properties.Public.checkbox ? (
-                    <PostCard post={project} />
+                  {project.status == "published" ? (
+                    <Link href={`/project/${project.slug}`} className="w-full">
+                      <PostCard post={project} />
+                    </Link>
                   ) : null}
                 </Fragment>
               ))}
@@ -70,31 +73,24 @@ export default function Home({ posts, projects, lonelil }: any) {
   );
 }
 
-export async function getStaticProps() {
-  let allPostsData = await getAllPosts();
-  let allProjectData = await getAllProjects();
-  allPostsData.forEach((post: any, i: number) => {
-    let titleJoin: any[] = [];
-    let descriptionJoin: any[] = [];
-    post.properties.Name.title.forEach((t: any) => {
-      titleJoin.push(t.plain_text);
-    });
-    post.properties.Description.rich_text.forEach((d: any) => {
-      descriptionJoin.push(d.plain_text);
-    });
-    const title = titleJoin.join("");
-    const description = descriptionJoin.join("");
-    allPostsData[i] = {
-      ...post,
-      title,
-      description,
-    };
-  });
-
+export const getStaticProps = async () => {
+  const allPosts = getDocuments("posts", [
+    "title",
+    "publishedAt",
+    "slug",
+    "coverImage",
+    "description",
+    "author",
+  ]);
+  const allProjects = getDocuments("projects", [
+    "title",
+    "publishedAt",
+    "slug",
+    "coverImage",
+    "description",
+    "author",
+  ]);
   return {
-    props: {
-      posts: allPostsData,
-      projects: allProjectData,
-    },
+    props: { posts: allPosts, projects: allProjects },
   };
-}
+};

@@ -1,4 +1,4 @@
-import { getAllPosts } from "../../lib/posts";
+import { getDocuments } from "outstatic/server";
 import { Fragment } from "react";
 import PostCard from "../../components/blog/postCard";
 import Link from "next/link";
@@ -28,9 +28,9 @@ export default function Blog({ posts }: any) {
           </div>
           <div className="mb-12 grid w-full grid-cols-1 grid-rows-2 gap-2 p-8 md:grid-cols-2 md:grid-rows-1 lg:p-0">
             {posts.map((post: any) => (
-              <Fragment key={post.id}>
-                {post.properties.Public.checkbox ? (
-                  <Link href={`/blog/${post.id}`}>
+              <Fragment key={post.slug}>
+                {post.status == "published" ? (
+                  <Link href={`/blog/${post.slug}`} className="w-full">
                     <PostCard post={post} />
                   </Link>
                 ) : null}
@@ -43,29 +43,17 @@ export default function Blog({ posts }: any) {
   );
 }
 
-export async function getStaticProps() {
-  let allPostsData = await getAllPosts();
-  allPostsData.forEach((post: any, i: number) => {
-    let titleJoin: any[] = [];
-    let descriptionJoin: any[] = [];
-    post.properties.Name.title.forEach((t: any) => {
-      titleJoin.push(t.plain_text);
-    });
-    post.properties.Description.rich_text.forEach((d: any) => {
-      descriptionJoin.push(d.plain_text);
-    });
-    const title = titleJoin.join("");
-    const description = descriptionJoin.join("");
-    allPostsData[i] = {
-      ...post,
-      title,
-      description,
-    };
-  });
+export const getStaticProps = async () => {
+  const allPosts = getDocuments("posts", [
+    "title",
+    "publishedAt",
+    "slug",
+    "coverImage",
+    "description",
+    "author",
+  ]);
 
   return {
-    props: {
-      posts: allPostsData,
-    },
+    props: { posts: allPosts },
   };
-}
+};

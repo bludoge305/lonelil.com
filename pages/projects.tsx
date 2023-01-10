@@ -1,7 +1,8 @@
-import { getAllProjects } from "../lib/projects";
+import { getDocuments } from "outstatic/server";
 import { Fragment } from "react";
 import PostCard from "../components/blog/postCard";
 import Head from "next/head";
+import Link from "next/link";
 
 export default function Projects({ projects }: any) {
   return (
@@ -31,9 +32,11 @@ export default function Projects({ projects }: any) {
           </div>
           <div className="mb-12 grid w-full grid-cols-1 grid-rows-2 gap-2 p-8 md:grid-cols-2 md:grid-rows-1 lg:p-0">
             {projects.map((project: any) => (
-              <Fragment key={project.id}>
-                {project.properties.Public.checkbox ? (
-                  <PostCard post={project} />
+              <Fragment key={project.slug}>
+                {project.status == "published" ? (
+                  <Link href={`/project/${project.slug}`} className="w-full">
+                    <PostCard post={project} />
+                  </Link>
                 ) : null}
               </Fragment>
             ))}
@@ -44,11 +47,16 @@ export default function Projects({ projects }: any) {
   );
 }
 
-export async function getStaticProps() {
-  let allProjectData = await getAllProjects();
+export const getStaticProps = async () => {
+  const allProjects = getDocuments("projects", [
+    "title",
+    "publishedAt",
+    "slug",
+    "coverImage",
+    "description",
+    "author",
+  ]);
   return {
-    props: {
-      projects: allProjectData,
-    },
+    props: { projects: allProjects },
   };
-}
+};
