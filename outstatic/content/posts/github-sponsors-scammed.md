@@ -14,17 +14,15 @@ Before I start, I didn't lose any money out of pocket.
 
 It all started when my GitHub Organization was approved for Github Sponsors on the Second of July, 2022, I thought nothing of it and didn't expect anyone to donate.
 
-![](blob:https://lonelil.dev/bb83386d-1822-4aaf-b952-b540c711ad16)
+![](https://lonelil.dev/images/posts/github-sponsors-scammed/1.png> "an-image-title")
 
 Two days later, I randomly got an email from GitHub saying I have reached my GitHub Sponsors goal of $50 per month. It was strange because we didn't have any public repositorys and the project was not even public yet.
 
-![](blob:https://lonelil.dev/36cff583-1613-4f2a-ad8f-c634db905d7c)<br>
-
-<br>
+![](https://lonelil.dev/images/posts/github-sponsors-scammed/2.png> "an-image-title")
 
 A day later, I got another email saying I have got an **$600.00 / year**.
 
-![](blob:https://lonelil.dev/80fa845d-a74d-40c9-8f31-b409a130725d)
+![](https://lonelil.dev/images/posts/github-sponsors-scammed/3.png> "an-image-title")
 
 I was confused at this point, but I thought it might be just a scam and ignored it.
 
