@@ -1,12 +1,12 @@
 ---
+title: 'How I got scammed out of $660 on GitHub Sponsors'
+status: 'published'
 author:
   name: 'lonelil'
   picture: 'https://avatars.githubusercontent.com/u/51315646?v=4'
-coverImage: '/images/3-c2OD.png'
-title: 'How I got scammed out of $660 on GitHub Sponsors'
-status: 'draft'
 slug: 'github-sponsors-scammed'
 description: ''
+coverImage: '/images/3-c2OD.png'
 publishedAt: '2023-01-11T09:10:05.775Z'
 ---
 
