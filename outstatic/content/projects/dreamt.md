@@ -5,7 +5,7 @@ author:
   name: 'lonelil'
   picture: 'https://avatars.githubusercontent.com/u/51315646?v=4'
 slug: 'dreamt'
-description: ''
+description: 'Dreamt was an Discord bot with commands to generate DALLE images & art.'
 coverImage: '/images/screenshot-2023-01-15-at-12.52.54-am-YzNj.png'
 publishedAt: '2023-01-14T17:40:23.000Z'
 ---
