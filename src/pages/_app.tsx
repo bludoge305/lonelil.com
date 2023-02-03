@@ -1,5 +1,7 @@
-import "./globals.css";
+import { type AppType } from "next/app";
+import "../styles/globals.css";
 import localFont from "@next/font/local";
+import Head from "next/head";
 const GoogleSans = localFont({
   src: [
     {
@@ -24,24 +26,20 @@ const GoogleSans = localFont({
     },
   ],
 });
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+const MyApp: AppType = ({ Component, pageProps }) => {
   return (
-    <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
-      <head />
-      <body
+    <>
+      <Head>
+        <title>lonelil.dev</title>
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+      </Head>
+      <main
         className={`${GoogleSans.className} mx-auto grid max-w-4xl grid-cols-6 gap-6 px-6 pb-40 pt-12`}
       >
-        {children}
-      </body>
-    </html>
+        <Component {...pageProps} />
+      </main>
+    </>
   );
-}
+};
+
+export default MyApp;
