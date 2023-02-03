@@ -4,8 +4,8 @@ const nextConfig = {
     appDir: true,
   },
   images: {
-    unoptimized: true
-  }
-}
+    unoptimized: true,
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
