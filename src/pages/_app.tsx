@@ -25,6 +25,7 @@ const GoogleSans = localFont({
       style: "normal",
     },
   ],
+  display: "swap",
 });
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
