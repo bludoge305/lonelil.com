@@ -1,9 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {},
   },
@@ -11,9 +8,9 @@ module.exports = {
     themes: [
       {
         main: {
-          primary: "#4c3b2d",
-          secondary: "#0d161d",
-          "base-100": "#0d161d",
+          primary: "black",
+          secondary: "black",
+          "base-100": "black",
         },
       },
     ],
