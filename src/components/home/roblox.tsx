@@ -31,9 +31,9 @@ export default function Roblox() {
     }
     fetchRobloxData();
     fetchRobloxThumbnail();
-    setInterval(function () {
+    /*setInterval(function () {
       fetchRobloxData();
-    }, 10000);
+    }, 10000);*/
   }, []);
 
   return (
