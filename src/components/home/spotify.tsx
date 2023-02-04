@@ -22,7 +22,7 @@ export default function Spotify({
           <span className="absolute inset-0 -z-10">
             <Image
               src={status?.spotify?.album_art_url || ""}
-              className="bg-black object-cover brightness-50 "
+              className="object-cover brightness-50 "
               fill
               alt={status?.spotify?.song || "Album"}
             />
@@ -45,6 +45,15 @@ export default function Spotify({
       ) : (
         <div className="relative col-span-3 flex h-full overflow-hidden rounded-2xl md:col-span-2">
           <span className="flex flex-1 flex-col justify-between p-6 text-white">
+            <span className="absolute inset-0 -z-10">
+              <Image
+                src={"roblox-backgrounds/dark.png"}
+                className="object-cover brightness-50 "
+                fill
+                alt={"Background"}
+              />
+            </span>
+
             <span className="flex justify-between">
               <SiSpotify className="text-2xl" />
               <HiOutlineExternalLink className="text-xl opacity-50 transition duration-500 group-hover:opacity-100" />
