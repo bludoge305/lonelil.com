@@ -37,7 +37,12 @@ export default function Roblox() {
   }, []);
 
   return (
-    <div className="relative col-span-3 flex h-full overflow-hidden rounded-2xl md:col-span-2">
+    <a
+      href="https://www.roblox.com/users/452443011/profile"
+      target="_blank"
+      rel="noreferrer"
+      className="relative col-span-3 flex h-full overflow-hidden rounded-2xl md:col-span-2"
+    >
       <span className="flex flex-1 flex-col justify-between p-6 text-white">
         <span className="absolute inset-0 -z-10">
           {robloxThumbnail && (
@@ -45,7 +50,7 @@ export default function Roblox() {
               src={robloxThumbnail}
               className="bg-white brightness-50"
               fill
-              alt="Album cover art"
+              alt="lonelilaf"
               style={{ objectFit: "cover" }}
             />
           )}
@@ -69,6 +74,6 @@ export default function Roblox() {
           </p>
         </div>
       </span>
-    </div>
+    </a>
   );
 }
