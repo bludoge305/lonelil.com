@@ -13,8 +13,8 @@ export default function Home() {
     <>
       <User loading={loading} status={status as LanyardData} />
       <Spotify loading={loading} status={status as LanyardData} />
-      <Battery />
       <Roblox />
+      <Battery />
     </>
   );
 }

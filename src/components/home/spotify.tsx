@@ -15,7 +15,7 @@ export default function Spotify({
       {status?.listening_to_spotify ? (
         <a
           href={`https://song.link/s/${status?.spotify?.track_id}`}
-          className="relative col-span-3 flex h-full overflow-hidden rounded-2xl md:col-span-2"
+          className="relative col-span-3 flex h-52 overflow-hidden rounded-2xl md:col-span-2"
           target="_blank"
           rel="noreferrer"
         >

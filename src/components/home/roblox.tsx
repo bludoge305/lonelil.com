@@ -41,7 +41,7 @@ export default function Roblox() {
       href="https://www.roblox.com/users/452443011/profile"
       target="_blank"
       rel="noreferrer"
-      className="relative col-span-3 flex h-full overflow-hidden rounded-2xl md:col-span-2"
+      className="relative col-span-3 flex h-52 overflow-hidden rounded-2xl md:col-span-2"
     >
       <span className="flex flex-1 flex-col justify-between p-6 text-white">
         <span className="absolute inset-0 -z-10">

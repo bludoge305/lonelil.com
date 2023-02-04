@@ -11,7 +11,7 @@ export default function User({
   status: LanyardData;
 }) {
   return (
-    <div className="col-span-3 flex items-center justify-center overflow-hidden rounded-2xl bg-[#bd936c] dark:bg-[#b9885f] dark:backdrop-blur-2xl md:col-span-4 md:h-52">
+    <div className="col-span-6 flex items-center justify-center overflow-hidden rounded-2xl bg-[#bd936c] dark:bg-[#b9885f] dark:backdrop-blur-2xl md:col-span-4 md:h-52">
       <div className="flex flex-col items-center space-y-4 py-8 px-6 md:flex-row md:space-y-0 md:space-x-4">
         {!loading ? (
           <Image
