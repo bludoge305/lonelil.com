@@ -17,7 +17,7 @@ export default function Discord({
           {status.activities.map((a: any, i: number) => {
             if (a.type === 2) return;
             return (
-              <div className="relative col-span-3 flex h-full overflow-hidden rounded-2xl md:col-span-2">
+              <div className="relative col-span-3 flex h-full overflow-hidden rounded-2xl md:col-span-2" key={i}>
                 <span className="flex flex-1 flex-col justify-between p-6 text-white">
                   {a.assets.large_image && (
                     <span className="absolute inset-0 -z-10">
