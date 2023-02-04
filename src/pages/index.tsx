@@ -16,7 +16,7 @@ export default function Home() {
       <Spotify loading={loading} status={status as LanyardData} />
       <Discord loading={loading} status={status as LanyardData} />
       <Roblox />
-      <Battery />
+      <Battery loading={loading} status={status as LanyardData} />
     </>
   );
 }
