@@ -48,10 +48,9 @@ export default function Roblox() {
           {robloxThumbnail && (
             <Image
               src={robloxThumbnail}
-              className="bg-white brightness-50"
+              className="bg-[url(/roblox-backgrounds/dark.png)] bg-cover bg-bottom bg-no-repeat object-cover brightness-50"
               fill
               alt="lonelilaf"
-              style={{ objectFit: "cover" }}
             />
           )}
         </span>

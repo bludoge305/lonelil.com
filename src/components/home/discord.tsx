@@ -17,7 +17,10 @@ export default function Discord({
           {status.activities.map((a: any, i: number) => {
             if (a.type === 2) return;
             return (
-              <div className="relative col-span-3 flex h-full overflow-hidden rounded-2xl md:col-span-2" key={i}>
+              <div
+                className="relative col-span-3 flex h-full overflow-hidden rounded-2xl md:col-span-2"
+                key={i}
+              >
                 <span className="flex flex-1 flex-col justify-between p-6 text-white">
                   {a.assets.large_image && (
                     <span className="absolute inset-0 -z-10">
@@ -30,10 +33,9 @@ export default function Discord({
                               )
                             : `https://cdn.discordapp.com/app-assets/${a.application_id}/${a.assets.large_image}`
                         }
-                        className="bg-black brightness-50"
+                        className="bg-black object-cover brightness-50"
                         fill
                         alt={a.assets.large_text}
-                        style={{ objectFit: "cover" }}
                       />
                     </span>
                   )}

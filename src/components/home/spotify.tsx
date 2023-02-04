@@ -22,10 +22,9 @@ export default function Spotify({
           <span className="absolute inset-0 -z-10">
             <Image
               src={status?.spotify?.album_art_url || ""}
-              className="bg-black brightness-50"
+              className="bg-black object-cover brightness-50 "
               fill
-              alt="Album cover art"
-              style={{ objectFit: "cover" }}
+              alt={status?.spotify?.song || "Album"}
             />
           </span>
 
