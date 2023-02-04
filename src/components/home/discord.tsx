@@ -30,7 +30,7 @@ export default function Discord({
                               )
                             : `https://cdn.discordapp.com/app-assets/${a.application_id}/${a.assets.large_image}`
                         }
-                        className="bg-white brightness-50"
+                        className="bg-black brightness-50"
                         fill
                         alt={a.assets.large_text}
                         style={{ objectFit: "cover" }}
