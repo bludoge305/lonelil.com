@@ -18,7 +18,7 @@ export default function Discord({
             if (a.type === 2) return;
             return (
               <div
-                className="relative col-span-3 flex h-full overflow-hidden rounded-2xl md:col-span-2"
+                className="relative col-span-3 flex h-52 overflow-hidden rounded-2xl md:col-span-2"
                 key={i}
               >
                 <span className="flex flex-1 flex-col justify-between p-6 text-white">
