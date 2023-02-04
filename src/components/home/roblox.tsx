@@ -43,8 +43,8 @@ export default function Roblox() {
       rel="noreferrer"
       className="relative col-span-3 flex h-52 overflow-hidden rounded-2xl md:col-span-2"
     >
-      <span className="flex flex-1 flex-col justify-between p-6 text-white">
-        <span className="absolute inset-0 -z-10">
+      <div className="flex flex-1 flex-col justify-between p-6 text-white">
+        <div className="absolute inset-0 -z-10">
           {robloxThumbnail && (
             <Image
               src={robloxThumbnail}
@@ -53,11 +53,11 @@ export default function Roblox() {
               alt="lonelilaf"
             />
           )}
-        </span>
-        <span className="flex justify-between">
+        </div>
+        <div className="flex justify-between">
           <SiRoblox className="text-2xl" />
           <HiOutlineExternalLink className="text-xl opacity-50" />
-        </span>
+        </div>
 
         <div className="space-y-0.5">
           <h2 className="font-title font-bold">lonelilaf</h2>
@@ -71,7 +71,7 @@ export default function Roblox() {
             .
           </p>
         </div>
-      </span>
+      </div>
     </a>
   );
 }

@@ -20,9 +20,9 @@ export default function Discord({
                 className="relative col-span-3 flex h-52 overflow-hidden rounded-2xl md:col-span-2"
                 key={i}
               >
-                <span className="flex flex-1 flex-col justify-between p-6 text-white">
+                <div className="flex flex-1 flex-col justify-between p-6 text-white">
                   {a.assets.large_image && (
-                    <span className="absolute inset-0 -z-10">
+                    <div className="absolute inset-0 -z-10">
                       <Image
                         src={
                           a.assets.large_image.startsWith("mp:external")
@@ -36,9 +36,9 @@ export default function Discord({
                         fill
                         alt={a.assets.large_text}
                       />
-                    </span>
+                    </div>
                   )}
-                  <span className="flex justify-between">
+                  <div className="flex justify-between">
                     <SiDiscord className="text-2xl" />
                     {a.assets.small_image && (
                       <Image
@@ -56,14 +56,14 @@ export default function Discord({
                         className="rounded-full"
                       />
                     )}
-                  </span>
+                  </div>
 
                   <div className="space-y-0.5">
                     <h2 className="font-title font-bold">{a.name}</h2>
                     <p className="text-sm">{a.state}</p>
                     <p className="text-xs">{a.details}</p>
                   </div>
-                </span>
+                </div>
               </div>
             );
           })}
