@@ -1,6 +1,5 @@
 import { LanyardData } from "react-use-lanyard";
 import Image from "next/image";
-import { HiOutlineExternalLink } from "react-icons/hi";
 import { SiDiscord } from "react-icons/si";
 
 export default function Discord({

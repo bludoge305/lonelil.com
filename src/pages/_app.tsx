@@ -35,7 +35,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
         <meta content="width=device-width, initial-scale=1" name="viewport" />
       </Head>
       <main
-        className={`${GoogleSans.className} mx-auto grid max-w-4xl grid-cols-6 gap-6 px-6 pb-40 pt-12`}
+        className={`${GoogleSans.className}`}
       >
         <Component {...pageProps} />
       </main>
