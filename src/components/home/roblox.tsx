@@ -57,12 +57,11 @@ export default function Roblox() {
         </span>
         <span className="flex justify-between">
           <SiRoblox className="text-2xl" />
-          <HiOutlineExternalLink className="text-xl opacity-50 transition duration-500 group-hover:opacity-100" />
+          <HiOutlineExternalLink className="text-xl opacity-50" />
         </span>
 
         <div className="space-y-0.5">
           <h2 className="font-title font-bold">lonelilaf</h2>
-
           <p className="text-sm">
             {robloxData?.LastLocation}
             {robloxData?.PresenceType === 0 &&

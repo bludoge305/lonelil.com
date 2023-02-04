@@ -32,12 +32,11 @@ export default function Spotify({
           <span className="flex flex-1 flex-col justify-between p-6 text-white">
             <span className="flex justify-between">
               <SiSpotify className="text-2xl" />
-              <HiOutlineExternalLink className="text-xl opacity-50 transition duration-500 group-hover:opacity-100" />
+              <HiOutlineExternalLink className="text-xl opacity-50" />
             </span>
 
             <div className="space-y-0.5">
               <h2 className="font-title font-bold">{status?.spotify?.song}</h2>
-
               <p className="text-sm">
                 by {status?.spotify?.artist} on {status?.spotify?.album}.
               </p>
