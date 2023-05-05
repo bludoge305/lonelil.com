@@ -66,7 +66,7 @@ const Home: NextPage = () => {
                         alt={discordData.spotify.album}
                         width={50}
                         height={50}
-                        className="rounded-lg"
+                        className="rounded-lg shadow-lg"
                       />
                       <div>
                         <h1 className="text-lg font-semibold">
@@ -112,7 +112,11 @@ const Home: NextPage = () => {
                         {!qq?.success && netease?.success && netease?.lyricUser
                           ? `${netease.lyricUser as string} via`
                           : ""}{" "}
-                        {qq?.success ? "QQ Music" : "Netease Music"}
+                        {qq?.success
+                          ? "QQ Music"
+                          : netease?.success
+                          ? "Netease Music"
+                          : ""}.
                       </p>
                     </div>
                   </div>
