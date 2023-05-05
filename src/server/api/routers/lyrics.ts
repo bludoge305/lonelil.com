@@ -24,7 +24,8 @@ function filterLyrics(lyrics: string) {
   return lyrics
     .replaceAll("&quot;", `"`)
     .replaceAll("&apos;", "'")
-    .replaceAll(/\[kana:\w*\]/g, "");
+    .replaceAll(/\[kana:\w*\]/g, "")
+    .substring(lyrics.indexOf("[00:00:00]"));
 }
 
 export const lyricsRouter = createTRPCRouter({
@@ -35,11 +36,7 @@ export const lyricsRouter = createTRPCRouter({
         `/search/get/?csrf_token=hlpretag=&hlposttag=&s=${`${input.song} ${input.artist}`}&type=1&offset=0&total=true&limit=10`
       );
 
-      const theSong = songs.result.songs.find((song: any) =>
-        song.artists
-          .map((artist: any) => artist.name.toLowerCase())
-          .includes(input.artist.toLowerCase())
-      );
+      const theSong = songs.result.songs[0];
 
       if (!theSong)
         return {
