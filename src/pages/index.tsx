@@ -9,10 +9,23 @@ import Color from "color-thief-react";
 const Home: NextPage = () => {
   const discordData = useLanyardWS("603129750638034957");
   const [musicElapsed, setMusicElapsed] = useState(0);
-  const [musicLyrics, setMusicLyrics] = useState("");
 
-  const { mutate: netease } = api.lyrics.netease.useMutation();
-  //console.log(data);
+  const input = {
+    song: discordData?.spotify?.song as string,
+    artist: discordData?.spotify?.artist.split("; ")[0] as string,
+  };
+
+  const input2 = {
+    enabled: !!discordData?.spotify,
+  };
+
+  const { data: qq } = api.lyrics.qqmusic.useQuery(input, {
+    ...input2,
+  });
+
+  const { data: netease } = api.lyrics.netease.useQuery(input, {
+    ...input2,
+  });
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -25,24 +38,6 @@ const Home: NextPage = () => {
       }
     }, 1000);
     return () => clearInterval(interval);
-  }, [discordData?.spotify]);
-
-  useEffect(() => {
-    if (discordData?.spotify) {
-      netease(
-        {
-          song: discordData.spotify.song,
-          artist: discordData.spotify.artist.split("; ")[0] as string,
-        },
-        {
-          onSuccess: (data) => {
-            if (data.success) {
-              setMusicLyrics(data.result);
-            }
-          },
-        }
-      );
-    }
   }, [discordData?.spotify]);
 
   return (
@@ -82,11 +77,17 @@ const Home: NextPage = () => {
                     </div>
                     <div>
                       <div className="h-[10rem] overflow-hidden">
-                        {musicLyrics && (
+                        {qq?.success || netease?.result ? (
                           <Lrc
                             style={{ overflow: "hidden" }}
                             recoverAutoScrollInterval={0}
-                            lrc={musicLyrics}
+                            lrc={
+                              qq?.success
+                                ? qq?.result
+                                : netease?.success
+                                ? netease?.result
+                                : ""
+                            }
                             currentMillisecond={musicElapsed + 500}
                             verticalSpace={false}
                             className={`${
@@ -104,8 +105,15 @@ const Home: NextPage = () => {
                               </p>
                             )}
                           />
-                        )}
+                        ) : null}
                       </div>
+                      <p className="mt-2 text-xs text-zinc-400">
+                        Lyrics provided by{" "}
+                        {!qq?.success && netease?.success && netease.lyricUser
+                          ? `${netease.lyricUser} via`
+                          : ""}{" "}
+                        {qq?.success ? "QQ Music" : "Netease Music"}
+                      </p>
                     </div>
                   </div>
                 )}

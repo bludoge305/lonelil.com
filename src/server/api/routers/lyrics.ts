@@ -21,21 +21,16 @@ const qqMusicClient = axios.create({
 });
 
 function filterLyrics(lyrics: string) {
-  return (
-    lyrics
-      .replaceAll("&quot;", `"`)
-      .replaceAll("&apos;", "'")
-      //dont cancel me pls
-      .replaceAll("n***a", "ni" + "gg" + "a")
-      .replaceAll("d**n", "damn")
-      .replaceAll("d**g", "drug")
-  );
+  return lyrics
+    .replaceAll("&quot;", `"`)
+    .replaceAll("&apos;", "'")
+    .replaceAll(/\[kana:\w*\]/g, "");
 }
 
 export const lyricsRouter = createTRPCRouter({
   netease: publicProcedure
     .input(z.object({ song: z.string(), artist: z.string() }))
-    .mutation(async ({ input }) => {
+    .query(async ({ input }) => {
       const { data: songs } = await neteaseClient.get(
         `/search/get/?csrf_token=hlpretag=&hlposttag=&s=${`${input.song} ${input.artist}`}&type=1&offset=0&total=true&limit=10`
       );
@@ -70,7 +65,7 @@ export const lyricsRouter = createTRPCRouter({
     }),
   qqmusic: publicProcedure
     .input(z.object({ song: z.string(), artist: z.string() }))
-    .mutation(async ({ input }) => {
+    .query(async ({ input }) => {
       const { data: songs } = await qqMusicClient.get(
         `/splcloud/fcgi-bin/smartbox_new.fcg?key=${`${input.song} ${input.artist}`}&format=json&inCharset=utf8&outCharset=utf8&platform=yqq.json`
       );
