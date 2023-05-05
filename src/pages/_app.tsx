@@ -1,7 +1,11 @@
 import { type AppType } from "next/app";
-import "../styles/globals.css";
-import localFont from "@next/font/local";
-import Head from "next/head";
+
+import { api } from "~/utils/api";
+
+import "~/styles/globals.css";
+import localFont from "next/font/local";
+import { NextSeo } from "next-seo";
+
 const GoogleSans = localFont({
   src: [
     {
@@ -27,20 +31,25 @@ const GoogleSans = localFont({
   ],
   display: "swap",
 });
+
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
-    <>
-      <Head>
-        <title>lonelil.dev</title>
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
-      </Head>
-      <main
-        className={`${GoogleSans.className}`}
-      >
-        <Component {...pageProps} />
-      </main>
-    </>
+    <main className={`min-h-screen overflow-hidden ${GoogleSans.className} bg-[#111] text-[#eee]`}>
+      <NextSeo
+        title="lonelil"
+        description="Explore my personal portfolio and blog on lonelil.dev. Learn more about my projects and experiences as a skilled developer, and discover how I can help you achieve your technology goals. "
+        openGraph={{
+          siteName: "lonelil.dev",
+        }}
+        twitter={{
+          handle: "@lonelilpublic",
+          site: "@lonelilpublic",
+          cardType: "summary_large_image",
+        }}
+      />
+      <Component {...pageProps} />
+    </main>
   );
 };
 
-export default MyApp;
+export default api.withTRPC(MyApp);

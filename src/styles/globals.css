@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* stolen from cider 2 lol, sorry i am lazy */
+.lyric-line {
+  --fontSize: 1.2rem;
+  --fontSizeBG: 1rem;
+  font-weight: 700;
+  opacity: 0.5;
+  font-size: var(--fontSize);
+  transform-origin: left;
+  transform: scale(0.8);
+  transition: transform 0.5s ease-out, opacity 0.8s ease-out;
+  margin-top: 0.5rem;
+  position: relative;
+  flex-direction: row;
+  gap: 16px;
+  width: 100%;
+  filter: blur(1px);
+}
+
+.lyric-line.active {
+  --appleEase: cubic-bezier(0.42, 0, 0.58, 1);
+  opacity: 1;
+  transform: scale(1);
+  filter: unset;
+  transition: transform 0.2s var(--appleEase), opacity 0.35s var(--appleEase);
+}

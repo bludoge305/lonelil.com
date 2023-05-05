@@ -5,4 +5,4 @@
 
 Credit:
 
-a lot of the code is from https://github.com/alii/website
+Lyrics CSS by Cider 2
