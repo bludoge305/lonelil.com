@@ -109,8 +109,8 @@ const Home: NextPage = () => {
                       </div>
                       <p className="mt-2 text-xs text-zinc-400">
                         Lyrics provided by{" "}
-                        {!qq?.success && netease?.success && netease.lyricUser
-                          ? `${netease.lyricUser} via`
+                        {!qq?.success && netease?.success && netease?.lyricUser
+                          ? `${netease.lyricUser as string} via`
                           : ""}{" "}
                         {qq?.success ? "QQ Music" : "Netease Music"}
                       </p>
