@@ -113,7 +113,7 @@ const Home: NextPage = () => {
                                 ? netease?.result
                                 : ""
                             }
-                            currentMillisecond={musicElapsed + 500}
+                            currentMillisecond={musicElapsed}
                             verticalSpace={false}
                             className={`${
                               discordData.spotify.song.length > 50
