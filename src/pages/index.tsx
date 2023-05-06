@@ -157,14 +157,14 @@ const Home: NextPage = () => {
                       <>
                         <Color
                           src={
-                            (activity.assets?.large_image.replace(
+                            activity.assets?.large_image.replace(
                               "mp:",
                               "https://media.discordapp.net/"
-                            ) as string) ||
-                            (activity.assets.small_image.replace(
+                            ) ||
+                            activity.assets.small_image.replace(
                               "mp:",
                               "https://media.discordapp.net/"
-                            ) as string)
+                            )
                           }
                           format="rgbString"
                           crossOrigin="anonymous"
