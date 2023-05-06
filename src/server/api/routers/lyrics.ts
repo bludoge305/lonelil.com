@@ -22,9 +22,11 @@ const qqMusicClient = axios.create({
 
 function filterLyrics(lyrics: string) {
   return lyrics
+    .replaceAll("\r", "")
     .replaceAll("&quot;", `"`)
     .replaceAll("&apos;", "'")
-    .replace(/^\[(ti|ar|al|by|offset|kana):.*(\n|$)/gm, "");
+    .replace(/^\[(ti|ar|al|by|offset|kana):.*(\n|$)/gm, "")
+    .trimStart();
 }
 
 export const lyricsRouter = createTRPCRouter({

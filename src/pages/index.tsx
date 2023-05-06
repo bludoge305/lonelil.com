@@ -5,6 +5,8 @@ import { api } from "~/utils/api";
 import { Lrc } from "react-lrc";
 import Image from "next/image";
 import Color from "color-thief-react";
+import { HiOutlineDevicePhoneMobile } from "react-icons/hi2";
+import Link from "next/link";
 
 function getDiscordRPCAsset(input: string, applicationID: any) {
   return input.includes("mp")
@@ -13,6 +15,13 @@ function getDiscordRPCAsset(input: string, applicationID: any) {
         applicationID as string
       }/${input}.png`;
 }
+
+const navbarLinks = [
+  {
+    name: "Github",
+    href: "https://github.com/lonelil",
+  },
+];
 
 const Home: NextPage = () => {
   const discordData = useLanyardWS("603129750638034957");
@@ -51,25 +60,52 @@ const Home: NextPage = () => {
   return (
     <div className="p-8">
       <div className="flex flex-row items-center gap-2">
+        {discordData?.discord_user.avatar && (
+          <Image
+            src={`https://cdn.discordapp.com/avatars/${discordData.discord_user.id}/${discordData.discord_user.avatar}.png`}
+            alt="Avatar"
+            width={40}
+            height={40}
+            className={`rounded-full ring ring-${discordData.discord_status} mr-1`}
+          />
+        )}
         <h1 className="text-2xl font-semibold">lonelil</h1>
-        <div
-          className="h-[1em] w-[1em] animate-pulse rounded-xl"
-          style={{
-            backgroundColor:
-              discordData?.discord_status === "online"
-                ? "#23a55a"
-                : discordData?.discord_status === "idle"
-                ? "#f0b232"
-                : discordData?.discord_status === "dnd"
-                ? "#f23f43"
-                : discordData?.discord_status === "offline"
-                ? "#80848e"
-                : "white",
-          }}
-        ></div>
+        <svg
+          fill="none"
+          height="32"
+          shape-rendering="geometricPrecision"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1"
+          viewBox="0 0 24 24"
+          width="32"
+          className="block min-h-[32px] min-w-[32px] text-zinc-400"
+        >
+          <path d="M16.88 3.549L7.12 20.451"></path>
+        </svg>
+        {navbarLinks.map((link, i: number) => (
+          <Link
+            href={link.href}
+            key={i}
+            rel={link.href.startsWith("https") ? "noopener noreferrer" : ""}
+            target={link.href.startsWith("https") ? "_blank" : ""}
+            className="rounded-md px-4 py-2 font-semibold shadow-sm transition ease-in-out hover:bg-[#464444]"
+          >
+            {link.name}
+          </Link>
+        ))}
+        {discordData?.kv.battery && (
+          <div className="ml-auto flex items-center gap-1">
+            <HiOutlineDevicePhoneMobile />
+            <span className="text-sm">
+              {JSON.parse(discordData.kv.battery).battery}%
+            </span>
+          </div>
+        )}
       </div>
 
-      <div className="mt-4 flex flex-wrap gap-4">
+      <div className="mt-8 flex flex-wrap gap-4">
         {discordData?.spotify && (
           <Color
             src={discordData.spotify.album_art_url as string}

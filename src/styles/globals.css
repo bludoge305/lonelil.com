@@ -7,6 +7,22 @@ body {
   color: #eee;
 }
 
+.ring-online {
+  --tw-ring-color: rgb(35, 165, 90);
+}
+
+.ring-idle {
+  --tw-ring-color: rgb(240, 178, 50);
+}
+
+.ring-dnd {
+  --tw-ring-color: rgb(242, 63, 67);
+}
+
+.ring-offline {
+  --tw-ring-color: rgb(128, 132, 142);
+}
+
 /* stolen from cider 2 lol, sorry i am lazy */
 .lyric-line {
   --fontSize: 1.2rem;
