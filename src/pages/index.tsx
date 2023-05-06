@@ -114,9 +114,9 @@ const Home: NextPage = () => {
                                 : ""
                             }
                             currentMillisecond={musicElapsed + 500}
-                            verticalSpace={true}
+                            verticalSpace={false}
                             className={`${
-                              discordData.spotify.song.length > 50
+                              discordData.spotify.song.length > 35
                                 ? "h-[40rem]"
                                 : "h-[30rem]"
                             } `}
