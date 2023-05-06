@@ -9,7 +9,9 @@ import Color from "color-thief-react";
 function getDiscordRPCAsset(input: string, applicationID: any) {
   return input.includes("mp")
     ? input.replace("mp:", "https://media.discordapp.net/")
-    : `https://cdn.discordapp.com/app-assets/${applicationID}/${input}.png`;
+    : `https://cdn.discordapp.com/app-assets/${
+        applicationID as string
+      }/${input}.png`;
 }
 
 const Home: NextPage = () => {
