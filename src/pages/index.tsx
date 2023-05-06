@@ -99,7 +99,7 @@ const Home: NextPage = () => {
           <div className="ml-auto flex items-center gap-1">
             <HiOutlineDevicePhoneMobile />
             <span className="text-sm">
-              {JSON.parse(discordData.kv.battery).battery}%
+              {JSON.parse(discordData.kv.battery).battery as string}%
             </span>
           </div>
         )}
