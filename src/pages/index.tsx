@@ -6,6 +6,12 @@ import { Lrc } from "react-lrc";
 import Image from "next/image";
 import Color from "color-thief-react";
 
+function getDiscordRPCAsset(input: string, applicationID: any) {
+  return input.includes("mp")
+    ? input.replace("mp:", "https://media.discordapp.net/")
+    : `https://cdn.discordapp.com/app-assets/${applicationID}/${input}.png`;
+}
+
 const Home: NextPage = () => {
   const discordData = useLanyardWS("603129750638034957");
   const [musicElapsed, setMusicElapsed] = useState(0);
@@ -154,13 +160,13 @@ const Home: NextPage = () => {
                     <>
                       <Color
                         src={
-                          activity.assets?.large_image.replace(
-                            "mp:",
-                            "https://media.discordapp.net/"
+                          getDiscordRPCAsset(
+                            activity.assets?.large_image,
+                            activity.application_id
                           ) ||
-                          activity.assets.small_image.replace(
-                            "mp:",
-                            "https://media.discordapp.net/"
+                          getDiscordRPCAsset(
+                            activity.assets?.small_image,
+                            activity.application_id
                           )
                         }
                         format="rgbString"
@@ -175,12 +181,10 @@ const Home: NextPage = () => {
                           >
                             <div className="flex items-center space-x-4">
                               <Image
-                                src={
-                                  activity.assets?.large_image.replace(
-                                    "mp:",
-                                    "https://media.discordapp.net/"
-                                  ) as string
-                                }
+                                src={getDiscordRPCAsset(
+                                  activity.assets?.large_image as string,
+                                  activity.application_id
+                                )}
                                 alt={activity.assets?.large_text as string}
                                 width={50}
                                 height={50}
