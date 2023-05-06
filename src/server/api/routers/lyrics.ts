@@ -24,8 +24,7 @@ function filterLyrics(lyrics: string) {
   return lyrics
     .replaceAll("&quot;", `"`)
     .replaceAll("&apos;", "'")
-    .replaceAll(/\[kana:\w*\]/g, "")
-    .substring(lyrics.indexOf("[00:00:00]"));
+    .replace(/^\[(ti|ar|al|by|offset|kana):.*(\n|$)/gm, "");
 }
 
 export const lyricsRouter = createTRPCRouter({
