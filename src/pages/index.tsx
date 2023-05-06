@@ -8,6 +8,7 @@ import Color from "color-thief-react";
 import { HiOutlineDevicePhoneMobile } from "react-icons/hi2";
 import Link from "next/link";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function getDiscordRPCAsset(input: string, applicationID: any) {
   return input.includes("mp")
     ? input.replace("mp:", "https://media.discordapp.net/")
@@ -99,7 +100,10 @@ const Home: NextPage = () => {
           <div className="ml-auto flex items-center gap-1">
             <HiOutlineDevicePhoneMobile />
             <span className="text-sm">
-              {JSON.parse(discordData.kv.battery).battery as string}%
+              {discordData.kv.battery
+                .replace(`{"battery":"`, "")
+                .replace(`"}`, "")}
+              %
             </span>
           </div>
         )}
