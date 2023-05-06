@@ -34,7 +34,7 @@ const GoogleSans = localFont({
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
-    <main className={`min-h-[100dvh] overflow-hidden ${GoogleSans.className} bg-[#111] text-[#eee]`}>
+    <main className={`min-h-[100dvh] overflow-hidden ${GoogleSans.className}`}>
       <NextSeo
         title="lonelil"
         description="Explore my personal portfolio and blog on lonelil.dev. Learn more about my projects and experiences as a skilled developer, and discover how I can help you achieve your technology goals. "

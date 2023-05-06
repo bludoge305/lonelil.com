@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  background-color: #111;
+  color: #eee;
+}
+
 /* stolen from cider 2 lol, sorry i am lazy */
 .lyric-line {
   --fontSize: 1.2rem;
