@@ -8,6 +8,8 @@ import Color from "color-thief-react";
 import { HiOutlineDevicePhoneMobile } from "react-icons/hi2";
 import Link from "next/link";
 
+import { FaDiscord, FaGithub, FaTwitter } from "react-icons/fa";
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function getDiscordRPCAsset(input: string, applicationID: any) {
   return input.includes("mp")
@@ -17,10 +19,28 @@ function getDiscordRPCAsset(input: string, applicationID: any) {
       }/${input}.png`;
 }
 
-const navbarLinks = [
+const linksCard = [
   {
-    name: "Github",
+    title: "GitHub",
+    description:
+      "Here you can find all my projects and contributions to other projects.",
+    icon: FaGithub,
     href: "https://github.com/lonelil",
+    color: "#24292f",
+  },
+  {
+    title: "Discord",
+    description: "My Discord to contact me or just to chat with me.",
+    icon: FaDiscord,
+    href: "https://discord.com/users/603129750638034957",
+    color: "#5865F2",
+  },
+  {
+    title: "Twitter",
+    description: "My Twitter to contact me or just to chat with me.",
+    icon: FaTwitter,
+    href: "https://twitter.com/lonelilpublic",
+    color: "#1DA1F2",
   },
 ];
 
@@ -71,31 +91,7 @@ const Home: NextPage = () => {
           />
         )}
         <h1 className="text-2xl font-semibold">lonelil</h1>
-        <svg
-          fill="none"
-          height="32"
-          shape-rendering="geometricPrecision"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="1"
-          viewBox="0 0 24 24"
-          width="32"
-          className="block min-h-[32px] min-w-[32px] text-zinc-400"
-        >
-          <path d="M16.88 3.549L7.12 20.451"></path>
-        </svg>
-        {navbarLinks.map((link, i: number) => (
-          <Link
-            href={link.href}
-            key={i}
-            rel={link.href.startsWith("https") ? "noopener noreferrer" : ""}
-            target={link.href.startsWith("https") ? "_blank" : ""}
-            className="rounded-md px-4 py-2 font-semibold shadow-sm transition ease-in-out hover:bg-[#464444]"
-          >
-            {link.name}
-          </Link>
-        ))}
+
         {discordData?.kv.battery && (
           <div className="ml-auto flex items-center gap-1">
             <HiOutlineDevicePhoneMobile />
@@ -216,7 +212,7 @@ const Home: NextPage = () => {
                       >
                         {({ data }) => (
                           <div
-                            className="flex w-full items-center rounded-lg p-8 md:max-w-sm"
+                            className="flex w-full items-center rounded-lg p-8 md:max-w-md"
                             style={{
                               backgroundColor: data?.replace(")", ", 0.7)"),
                             }}
@@ -245,7 +241,7 @@ const Home: NextPage = () => {
                       </Color>
                     </>
                   ) : (
-                    <div className="w-full rounded-lg p-8 md:max-w-sm">
+                    <div className="w-full rounded-lg p-8 md:max-w-md">
                       <div className="flex items-center space-x-4">
                         <div>
                           <h1 className="text-lg font-semibold">
@@ -260,6 +256,29 @@ const Home: NextPage = () => {
                 </>
               )}
             </>
+          );
+        })}
+
+        {linksCard.map((link, i: number) => {
+          return (
+            <Link
+              className="flex w-full items-center rounded-lg p-8 md:max-w-md"
+              href={link.href}
+              key={i}
+              rel={link.href.startsWith("https") ? "noopener noreferrer" : ""}
+              target={link.href.startsWith("https") ? "_blank" : ""}
+              style={{
+                backgroundColor: link.color,
+              }}
+            >
+              <div className="flex items-center space-x-4">
+                <link.icon size={50} />
+                <div>
+                  <h1 className="text-lg font-semibold">{link.title}</h1>
+                  <h2 className="text-sm">{link.description}</h2>
+                </div>
+              </div>
+            </Link>
           );
         })}
       </div>
